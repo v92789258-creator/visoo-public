@@ -89,7 +89,7 @@ Por eso no debe tratarse como un script aislado. Una modificación en inventario
 - Python 3.10 o superior.
 - PHP 8.x y MySQL/MariaDB si se utilizará el backend incluido en `php/`.
 
-La aplicación se desarrolló principalmente para Windows. Algunas funciones opcionales, como chatbot, impresión, generación de Excel o sincronización remota, requieren sus dependencias y configuración correspondiente.
+La aplicación se desarrolló principalmente para Windows. Algunas funciones opcionales, como impresión, generación de Excel o sincronización remota, requieren sus dependencias y configuración correspondiente.
 
 ## Instalación rápida
 
@@ -103,7 +103,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-`requirements.txt` es la instalación completa e incluye las librerías para la interfaz PyQt5, PDF, imágenes, códigos QR, red, impresoras, Excel, validación, sincronización y herramientas de compilación. También incluye `anthropic` como dependencia opcional para las funciones de IA.
+`requirements.txt` es la instalación completa e incluye las librerías para la interfaz PyQt5, PDF, imágenes, códigos QR, red, impresoras, Excel, validación, sincronización y herramientas de compilación.
 
 Si solo quieres probar la interfaz y las funciones básicas, puedes instalar el conjunto reducido:
 
@@ -160,7 +160,6 @@ El código PHP está en `php/`. Configura el servidor web y la base de datos seg
 - `VISO_ADMIN_TOKEN`
 - `VISO_BACKUP_TOKEN`
 - `SUNAT_DEFAULT_TOKEN`
-- `ANTHROPIC_API_KEY` (opcional)
 
 Revisa y cambia las URLs de API antes de desplegar una instalación propia.
 

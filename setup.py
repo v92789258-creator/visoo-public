@@ -80,7 +80,6 @@ args = [
     "--hidden-import=psutil",
 
     # --- INCLUIR: AI (Opcional) ---
-    "--hidden-import=anthropic",
 ]
 
 # --- Carpetas/archivos locales a incluir ---

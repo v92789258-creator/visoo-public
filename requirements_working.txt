@@ -28,9 +28,6 @@ python-dateutil==2.8.2
 psutil==5.9.5
 colorama==0.4.6
 
-# AI/Chatbot
-anthropic==0.7.1
-
 # Build Tools
 setuptools==69.0.2
 

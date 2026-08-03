@@ -30,9 +30,6 @@ python-dateutil==2.9.0.post0
 psutil==6.2.0
 colorama==0.4.6
 
-# AI/Chatbot (Optional - can be commented out if not using)
-anthropic==0.16.1
-
 # Build Tools
 PyInstaller==6.16.0
 pyinstaller-hooks-contrib==2025.8
