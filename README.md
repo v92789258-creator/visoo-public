@@ -113,11 +113,44 @@ pip install -r requirements_minimal.txt
 
 El conjunto reducido puede necesitar paquetes adicionales cuando se utilicen módulos avanzados.
 
-Para generar un ejecutable de Windows, instala las dependencias de compilación y ejecuta:
+## Crear el ejecutable de Windows
+
+El archivo recomendado para compilar VISO es `build_exe_optimized.py`. Primero instala las dependencias completas del proyecto y ejecuta el comando desde la carpeta raíz:
 
 ```powershell
-python setup.py
+pip install -r requirements.txt
+python build_exe_optimized.py
 ```
+
+Este script usa PyInstaller y genera un build optimizado en modo `onedir`. El ejecutable queda normalmente en:
+
+```text
+dist/VISO/VISO.exe
+```
+
+El proceso necesita encontrar `main.py` e `icon.ico`, y recomienda tener al menos 7 GB libres entre el disco del proyecto y la carpeta temporal de Windows. Si existe `splash.png`, también se incorpora al arranque.
+
+### Perfiles de compilación
+
+Sin argumentos se compila el perfil completo. También puedes usar estos perfiles y opciones:
+
+```powershell
+# Desarrollo: deja visible la consola para ver errores
+python build_exe_optimized.py dev
+
+# Inicio más rápido, reduciendo componentes pesados
+python build_exe_optimized.py faststart
+
+# Ejecutable más pequeño si UPX está instalado
+python build_exe_optimized.py small
+
+# Perfil rápido conservando Excel, PDF, reportes e impresión térmica
+python build_exe_optimized.py faststart withpdf withreports withexcel withthermal
+```
+
+Opciones adicionales: `nopdf`, `noreports`, `noexcel`, `nothermal`, `noqml`, `legacydata`, `withpdf`, `withreports`, `withexcel` y `withthermal`. Al usar `noexcel`, por ejemplo, el ejecutable no incluirá la exportación a Excel.
+
+El archivo `setup.py` también contiene una configuración alternativa de PyInstaller, pero `build_exe_optimized.py` es la opción recomendada para la versión actual.
 
 ## Backend PHP
 
