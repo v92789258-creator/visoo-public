@@ -1,6 +1,87 @@
-# VISO
+# VISO 4.2.4
 
-Sistema de gestión para ópticas. Incluye una aplicación de escritorio para administrar productos, pacientes, ventas, inventario, reportes e impresión, además de un backend PHP para sincronización y servicios web.
+VISO es un sistema de gestión para ópticas. Está pensado para centralizar en una sola plataforma la atención de pacientes, el catálogo de productos, el inventario, las ventas, los reportes y la comunicación con servicios externos.
+
+No es únicamente una pantalla de ventas: el proyecto incluye una aplicación de escritorio, un backend PHP, sincronización con servidores, generación de documentos, integraciones tributarias y herramientas de compilación y mantenimiento.
+
+## ¿Qué funciones tiene?
+
+### Gestión de la óptica
+
+- Registro y consulta de pacientes y clientes.
+- Gestión de productos, categorías, precios, imágenes y existencias.
+- Inventario, movimientos, kardex y actualización de stock.
+- Registro e historial de ventas.
+- Gestión de graduaciones y datos relacionados con la atención óptica.
+- Citas, notificaciones y avisos dentro de la aplicación.
+- Usuarios, autenticación, permisos y control de licencias.
+
+### Documentos, reportes e impresión
+
+- Reportes diarios, globales y avanzados.
+- Exportación de información a Excel.
+- Generación de documentos PDF y comprobantes.
+- Códigos QR y manejo de imágenes.
+- Soporte para impresoras, puertos serie y algunas impresoras térmicas.
+
+### Facturación e integraciones
+
+- Integración con servicios de SUNAT para operaciones y comprobantes electrónicos.
+- Generación de formatos UBL y archivos PLE en los módulos correspondientes.
+- Comunicación con servicios web propios mediante APIs PHP.
+- Envío de notificaciones y herramientas de integración con WhatsApp.
+- Sincronización de información entre la aplicación, el servidor y dispositivos secundarios.
+
+### Administración y continuidad operativa
+
+- Copias de seguridad y restauración.
+- Colas de sincronización y sincronización en segundo plano.
+- Diagnóstico, registros de errores y comprobaciones de dependencias.
+- Scripts para migración, actualización y recuperación de instalaciones.
+- Construcción de ejecutables para Windows con PyInstaller y herramientas auxiliares de compilación.
+
+## Arquitectura general
+
+El proyecto está organizado por responsabilidades:
+
+```text
+VISO/
+├── main.py                 Aplicación de escritorio y punto de entrada
+├── core/                   Configuración, inicio, logs y manejo de errores
+├── gui/                    Ventanas, páginas, diálogos y componentes PyQt5
+├── utils/                  Inventario, ventas, reportes, sincronización e integraciones
+├── php/                    Backend, autenticación, licencias, backups y APIs
+├── api/                    Servicios auxiliares, incluidos endpoints para Android
+├── data/                   Recursos y datos base no sensibles
+├── images/                 Imágenes y recursos visuales
+├── web-viso/               Recursos web complementarios
+├── cpp/, csharp/, ext/     Componentes y herramientas auxiliares
+└── scripts/                Utilidades de mantenimiento y soporte
+```
+
+La aplicación principal está desarrollada en Python con PyQt5. El backend está desarrollado en PHP y utiliza MySQL/MariaDB. La comunicación entre ambos lados se realiza mediante HTTP/HTTPS y APIs, mientras que los procesos de sincronización utilizan colas, trabajadores y tareas en segundo plano.
+
+## ¿Qué tan grande o complejo es?
+
+VISO es un proyecto grande para una aplicación mantenida por un equipo pequeño. En esta versión pública el repositorio contiene aproximadamente:
+
+- Más de 500 archivos versionados.
+- 313 archivos Python para la aplicación, la interfaz, utilidades y herramientas.
+- 49 archivos PHP para el backend y las APIs.
+- Código adicional HTML, JavaScript, CSS, C/C++ y C#.
+- La carpeta `gui/` contiene más de 200 archivos y alrededor de 100.000 líneas de código.
+
+Su complejidad viene de que combina varias áreas que normalmente estarían separadas:
+
+1. Una aplicación de escritorio con muchas pantallas y diálogos.
+2. Reglas de negocio para pacientes, ventas, inventario y reportes.
+3. Persistencia local y comunicación con bases de datos remotas.
+4. Sincronización, colas, trabajadores y manejo de conflictos.
+5. Backend PHP con autenticación, licencias, backups y endpoints para distintos clientes.
+6. Integraciones externas como SUNAT, WhatsApp, impresoras y servicios de actualización.
+7. Empaquetado como ejecutable de Windows y herramientas de diagnóstico.
+
+Por eso no debe tratarse como un script aislado. Una modificación en inventario, ventas, sincronización o APIs puede afectar otras partes del sistema. Para contribuir conviene entender primero el flujo de datos y probar los cambios en una instalación de desarrollo.
 
 ## Requisitos
 
@@ -37,13 +118,6 @@ El código PHP está en `php/`. Configura el servidor web y la base de datos seg
 - `ANTHROPIC_API_KEY` (opcional)
 
 Revisa y cambia las URLs de API antes de desplegar una instalación propia.
-
-## Qué incluye
-
-- Gestión de pacientes, productos, ventas e inventario.
-- Reportes y generación de documentos PDF.
-- Soporte para impresión y códigos QR.
-- Integración con servicios externos cuando se configuran sus credenciales.
 
 ## Seguridad
 
