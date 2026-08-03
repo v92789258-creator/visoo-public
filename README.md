@@ -89,6 +89,8 @@ Por eso no debe tratarse como un script aislado. Una modificación en inventario
 - Python 3.10 o superior.
 - PHP 8.x y MySQL/MariaDB si se utilizará el backend incluido en `php/`.
 
+La aplicación se desarrolló principalmente para Windows. Algunas funciones opcionales, como chatbot, impresión, generación de Excel o sincronización remota, requieren sus dependencias y configuración correspondiente.
+
 ## Instalación rápida
 
 ```powershell
@@ -97,9 +99,19 @@ cd visoo-public
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install -r requirements_minimal.txt
+pip install -r requirements.txt
 python main.py
 ```
+
+`requirements.txt` es la instalación completa e incluye las librerías para la interfaz PyQt5, PDF, imágenes, códigos QR, red, impresoras, Excel, validación, sincronización y herramientas de compilación. También incluye `anthropic` como dependencia opcional para las funciones de IA.
+
+Si solo quieres probar la interfaz y las funciones básicas, puedes instalar el conjunto reducido:
+
+```powershell
+pip install -r requirements_minimal.txt
+```
+
+El conjunto reducido puede necesitar paquetes adicionales cuando se utilicen módulos avanzados.
 
 Para generar un ejecutable de Windows, instala las dependencias de compilación y ejecuta:
 
