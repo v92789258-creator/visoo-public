@@ -1,0 +1,60 @@
+import sys
+import os
+import socket
+import shutil
+import json
+import zipfile
+import webbrowser
+import datetime
+import uuid
+import csv
+try:
+    import pandas as pd # type: ignore
+except ImportError:
+    pd = None
+try:
+    import openpyxl # type: ignore
+except ImportError:
+    openpyxl = None
+from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5.QtWidgets import (
+    QWidget, QVBoxLayout, QLabel, QGroupBox, QLineEdit, QPushButton,
+    QListWidget, QHBoxLayout, QMessageBox, QFormLayout, QApplication,
+    QFileDialog, QTabWidget, QAbstractItemView, QFrame, QProgressDialog,
+    QScrollArea, QGridLayout, QCheckBox
+)
+from PyQt5.QtCore import Qt, QTimer
+
+# Importar páginas de gestión
+# Materiales/Tallas/Tipos de Lente han sido movidos a Inventario > Configuración
+from gui.main_window_pages.helpers_page import HelpersPage
+
+from utils.lan_service import LanServerWorker, LanClient, LanAutoSyncWorker
+from utils.text_normalizer import maybe_normalize_ui_text
+import threading
+
+def _get_file_handler():
+    from utils import file_handler
+    return file_handler
+
+def is_modo_basico_safe(username):
+    try:
+        from pathlib import Path
+        import json
+        # Usar ruta absoluta directa para evitar dependencias circulares
+        p = Path(r'C:\Users\USUARIO.DESKTOP-NOO0BDB\Desktop\VISO') / str(username) / 'data' / 'modo_basico.json'
+        if p.exists():
+            with open(p, 'r', encoding='utf-8') as f:
+                return bool(json.load(f).get('modo_basico', False))
+    except: pass
+    return False
+
+def set_modo_basico_safe(username, active):
+    try:
+        from pathlib import Path
+        import json
+        p = Path(r'C:\Users\USUARIO.DESKTOP-NOO0BDB\Desktop\VISO') / str(username) / 'data' / 'modo_basico.json'
+        p.parent.mkdir(parents=True, exist_ok=True)
+        with open(p, 'w', encoding='utf-8') as f:
+            json.dump({'modo_basico': bool(active)}, f, indent=4)
+    except: pass

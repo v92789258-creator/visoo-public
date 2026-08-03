@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>29-05-26</title>
+
+<style>
+@page{
+    size:A4 landscape;
+    margin:10mm;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#ffffff;
+    font-family:"Courier New", monospace;
+    color:#000;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+}
+
+.hoja{
+    width:277mm;
+    min-height:190mm;
+    margin:0 auto;
+    background:#fff;
+    padding:4mm 4mm 10mm 4mm;
+}
+
+.fecha{
+    text-align:right;
+    font-size:15px;
+    margin-bottom:8px;
+}
+
+.tabla{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.tabla th{
+    font-weight:normal;
+    text-align:left;
+    padding:4px 6px;
+    border-bottom:2px solid #234fb3;
+    font-size:12px;
+}
+
+.tabla td{
+    padding:4px 6px;
+    height:20px;
+    vertical-align:top;
+    font-size:11px;
+    word-break:break-word;
+}
+
+.col-codigo{ width:12%; border-right:2px solid #234fb3; }
+.col-nombre{ width:24%; border-right:2px solid #234fb3; }
+.col-detalle{ width:30%; border-right:2px solid #234fb3; }
+.col-precio{ width:11%; border-right:2px solid #234fb3; }
+.col-pago{ width:11%; border-right:2px solid #234fb3; }
+.col-debe{ width:12%; }
+
+.espacio{
+    height:70px;
+}
+
+.zona-abajo{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10mm;
+    margin-top:12px;
+}
+
+.gastos{
+    width:55%;
+    font-size:11px;
+    line-height:1.5;
+}
+
+.gastos .titulo{
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.gastos table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.gastos td{
+    padding:2px 4px;
+}
+
+.gastos .monto{
+    text-align:right;
+    width:32%;
+}
+
+.totales{
+    width:40%;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.totales div{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+}
+
+.valor{
+    min-width:80px;
+    text-align:right;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hoja">
+
+    <div class="fecha">29-05-26</div>
+
+    <table class="tabla">
+
+        <tr>
+            <th class="col-codigo">Código</th>
+            <th class="col-nombre">Nombre</th>
+            <th class="col-detalle">Detalle</th>
+            <th class="col-precio">Precio</th>
+            <th class="col-pago">Pago</th>
+            <th class="col-debe">Debe</th>
+        </tr>
+
+        <tr>
+            <td class="col-codigo">1709</td>
+            <td class="col-nombre">Jimenza Arbaez</td>
+            <td class="col-detalle">Montura</td>
+            <td class="col-precio">70.00</td>
+            <td class="col-pago">70.00</td>
+            <td class="col-debe"></td>
+        </tr>
+
+        <tr>
+            <td class="col-codigo">1710</td>
+            <td class="col-nombre">Yolanda</td>
+            <td class="col-detalle">Bifocal</td>
+            <td class="col-precio">180.00</td>
+            <td class="col-pago">160.00</td>
+            <td class="col-debe">20.00</td>
+        </tr>
+
+        <tr>
+            <td class="col-codigo">1711</td>
+            <td class="col-nombre">Oscar</td>
+            <td class="col-detalle">Luna</td>
+            <td class="col-precio">210.00</td>
+            <td class="col-pago">210.00</td>
+            <td class="col-debe"></td>
+        </tr>
+
+        <tr>
+            <td class="col-codigo">1712</td>
+            <td class="col-nombre">Alonzo</td>
+            <td class="col-detalle">Aro + Luna</td>
+            <td class="col-precio">250.00</td>
+            <td class="col-pago">250.00</td>
+            <td class="col-debe"></td>
+        </tr>
+
+        <tr>
+            <td class="col-codigo">1718</td>
+            <td class="col-nombre">Cliente</td>
+            <td class="col-detalle">Filtro Azul</td>
+            <td class="col-precio">120.00</td>
+            <td class="col-pago">120.00</td>
+            <td class="col-debe"></td>
+        </tr>
+
+    </table>
+
+    <div class="espacio"></div>
+
+    <div class="zona-abajo">
+
+        <div class="gastos">
+            <div class="titulo">Gastos</div>
+
+            <table>
+                <tr>
+                    <td>Blue cut </td>
+                    <td class="monto">35.00</td>
+                </tr>
+                <tr>
+                    <td>Bifocal</td>
+                    <td class="monto">21.00</td>
+                </tr>
+                <tr>
+                    <td>Luna Blanca</td>
+                    <td class="monto">5.00</td>
+                </tr>
+                <tr>
+                    <td>Antirreflejo</td>
+                    <td class="monto">200.00</td>
+                </tr>
+                <tr>
+                    <td>Fotocromático</td>
+                    <td class="monto">300.00</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="totales">
+
+            <div>
+                <span>Total Venta:</span>
+                <span class="valor">1490.00</span>
+            </div>
+
+            <div>
+                <span>Abonos:</span>
+                <span class="valor">1184.00</span>
+            </div>
+
+            <div>
+                <span>Gastos:</span>
+                <span class="valor">486.00</span>
+            </div>
+
+            <div>
+                <span>Total:</span>
+                <span class="valor">698.00</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

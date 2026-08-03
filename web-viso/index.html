@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISO - Sistema de Gestión para Ópticas y Consultorios Oftalmológicos</title>
+    <meta name="description"
+        content="VISO es el software definitivo para ópticas en Perú. Gestiona historias clínicas, recetas oftalmológicas, inventario, citas por WhatsApp y facturación electrónica SUNAT.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <img src="images/logo.ico" alt="VISO Logo" class="logo-img">
+                <span>VISO</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Abrir menú">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <nav class="nav-menu">
+                <a href="#features" class="nav-link">Características</a>
+                <a href="#about" class="nav-link">¿Qué es VISO?</a>
+                <a href="#demo" class="nav-link">Demo Interactiva</a>
+                <a href="#why-choose" class="nav-link">Beneficios</a>
+                <a href="#contact" class="btn btn-primary nav-btn">Solicitar Demo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section (Carousel) -->
+    <section class="hero-section">
+        <div class="hero-carousel-container">
+            <!-- Slide 1: Gestión e Inventario -->
+            <div class="hero-slide active" id="slide-1">
+                <div class="container hero-slide-wrapper">
+                    <div class="hero-slide-content">
+                        <div class="badge">Nueva versión 4.2.4</div>
+                        <h1 class="hero-title">El Software Definitivo para la Gestión de tu <span
+                                class="gradient-text">Óptica</span></h1>
+                        <p class="hero-description">
+                            Optimiza tus consultas, controla tu stock de monturas y lunas, automatiza citas y factura
+                            electrónicamente. Todo desde una aplicación de escritorio de alto rendimiento.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#demo" class="btn btn-primary">Ver Demo en Acción</a>
+                            <a href="#features" class="btn btn-secondary">Explorar Funciones</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: SUNAT Facturación -->
+            <div class="hero-slide" id="slide-2">
+                <div class="container hero-slide-wrapper">
+                    <div class="hero-slide-content">
+                        <div class="badge">Módulo Facturación</div>
+                        <h1 class="hero-title">Facturación Electrónica <span class="gradient-text">SUNAT</span>
+                            Integrada</h1>
+                        <p class="hero-description">
+                            Emite boletas y facturas electrónicas de forma rápida y 100% legal. Cumple automáticamente
+                            con los formatos obligatorios y genera los archivos PLE.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#features" class="btn btn-primary">Ver Módulo SUNAT</a>
+                            <a href="#contact" class="btn btn-secondary">Asesoría Gratuita</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: WhatsApp Automatización -->
+            <div class="hero-slide" id="slide-3">
+                <div class="container hero-slide-wrapper">
+                    <div class="hero-slide-content">
+                        <div class="badge">Recordatorios Automatizados</div>
+                        <h1 class="hero-title">Agenda y Citas por <span class="gradient-text">WhatsApp</span></h1>
+                        <p class="hero-description">
+                            Reduce las ausencias hasta en un 80% enviando avisos de cita personalizados y automáticos a
+                            tus pacientes directamente desde el sistema con un solo clic.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#demo" class="btn btn-primary">Probar Alertas</a>
+                            <a href="#contact" class="btn btn-secondary">Comenzar Ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <button class="carousel-control prev" aria-label="Slide anterior">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="carousel-control next" aria-label="Siguiente slide">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0" aria-label="Slide 1"></button>
+                <button class="indicator" data-slide="1" aria-label="Slide 2"></button>
+                <button class="indicator" data-slide="2" aria-label="Slide 3"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Para qué sirve VISO?</h2>
+                <p class="section-subtitle">Una suite completa de herramientas optimizada para cubrir todas las
+                    necesidades clínicas y comerciales de tu negocio óptico.</p>
+            </div>
+
+            <div class="grid features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Gestión Clínica de Pacientes</h3>
+                    <p>Fichas de pacientes integradas con recetas oftalmológicas detalladas. Registra esfera, cilindro,
+                        eje, adición (cerca/lejos) y agudeza visual.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-emerald">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <h3>Agenda y Recordatorios de Citas</h3>
+                    <p>Calendario interactivo para programar citas. Envía plantillas de recordatorio y confirmaciones de
+                        citas directamente a los clientes a través de WhatsApp con un solo clic.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-purple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Facturación Electrónica SUNAT</h3>
+                    <p>Módulo de facturación adaptado a las regulaciones peruanas. Emite boletas y facturas electrónicas
+                        de forma rápida y genera archivos para los Libros Electrónicos (PLE).</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-orange">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Control de Inventario Preciso</h3>
+                    <p>Controla existencias de monturas, lunas oftálmicas, lentes de contacto y accesorios. El sistema
+                        genera alertas visuales automáticas cuando el stock está bajo mínimos.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-indigo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3>Dashboard y Gráficos Financieros</h3>
+                    <p>Analiza el rendimiento de tu negocio. Visualiza gráficos de ventas mensuales, rankings de
+                        productos más vendidos y los clientes más recurrentes.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-pink">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                            <rect x="6" y="14" width="12" height="8"></rect>
+                        </svg>
+                    </div>
+                    <h3>Impresión en Formato Ticketera</h3>
+                    <p>Soporte para ticketeras térmicas (Bluetooth y USB) de 58mm y 80mm. Imprime boletas simplificadas,
+                        comprobantes de pago y recetas de manera instantánea.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is VISO / About Section -->
+    <section id="about" class="about-section">
+        <div class="container grid about-grid">
+            <div class="about-visual">
+                <div class="floating-elements-container">
+                    <div class="floating-element card-p">
+                        <div class="el-header">Recetas Clínicas</div>
+                        <div class="el-body">
+                            <span>OD: -1.50 -0.50 x 90 grados</span>
+                            <span>OI: -1.75 -0.75 x 95 grados</span>
+                        </div>
+                    </div>
+                    <div class="floating-element card-w">
+                        <div class="el-header">Alertas WhatsApp</div>
+                        <div class="el-body">Recordatorio de cita enviado automáticamente.</div>
+                    </div>
+                    <div class="floating-element card-s">
+                        <div class="el-header">Estado SUNAT</div>
+                        <div class="el-body">Comprobante electrónico autorizado.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-content">
+                <h2 class="section-title">¿Qué es VISO?</h2>
+                <p class="about-text">
+                    <strong>VISO</strong> es un sistema de escritorio premium desarrollado bajo una arquitectura modular
+                    y optimizada, diseñado para modernizar y facilitar el día a día de las ópticas.
+                </p>
+                <p class="about-text">
+                    A diferencia de los sistemas web convencionales que dependen de una conexión a internet constante,
+                    VISO se ejecuta directamente en tu computadora. Esto significa que nunca se detiene: el acceso a tus
+                    pacientes, inventario y recetas es inmediato, seguro y local.
+                </p>
+                <div class="about-points">
+                    <div class="point-item">
+                        <div class="point-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Independencia de Servidores</h4>
+                            <p>Tus datos clínicos están guardados localmente, garantizando privacidad de datos y
+                                velocidad.</p>
+                        </div>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Sincronización en la Nube (Opcional)</h4>
+                            <p>Mantén copias de seguridad automáticas y sincroniza la información si manejas múltiples
+                                locales.</p>
+                        </div>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Exportaciones Profesionales</h4>
+                            <p>Exporta reportes de ventas, historiales clínicos y listas de pacientes a archivos Excel
+                                estilizados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Explora la Interfaz de VISO</h2>
+                <p class="section-subtitle">Interactúa con esta simulación en vivo del dashboard principal y descubre lo
+                    intuitivo que es controlar tu óptica con VISO.</p>
+            </div>
+
+            <div class="demo-interactive-widget">
+                <div class="demo-sidebar">
+                    <div class="demo-sidebar-brand">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="logo-icon">
+                            <circle cx="6" cy="12" r="4" stroke="currentColor" stroke-width="2.5" />
+                            <circle cx="18" cy="12" r="4" stroke="currentColor" stroke-width="2.5" />
+                            <path d="M10 12H14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                        </svg>
+                        <span>VISO Admin</span>
+                    </div>
+                    <ul class="demo-nav">
+                        <li class="demo-nav-item active" data-tab="dashboard">
+                            <span>Dashboard</span>
+                        </li>
+                        <li class="demo-nav-item" data-tab="pacientes">
+                            <span>Pacientes</span>
+                        </li>
+                        <li class="demo-nav-item" data-tab="citas">
+                            <span>Citas y Agenda</span>
+                        </li>
+                        <li class="demo-nav-item" data-tab="ventas">
+                            <span>Ventas / Facturas</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="demo-content-pane">
+                    <!-- Tab: Dashboard -->
+                    <div class="tab-pane active" id="pane-dashboard">
+                        <div class="pane-header">
+                            <h2>Panel de Control</h2>
+                            <p>Resumen comercial de hoy</p>
+                        </div>
+                        <div class="pane-grid-3">
+                            <div class="pane-card bg-glass">
+                                <span>Total Ventas Hoy</span>
+                                <div class="value">S/. 1,850.00</div>
+                                <span class="sub text-success">4 Ventas Realizadas</span>
+                            </div>
+                            <div class="pane-card bg-glass">
+                                <span>Citas de Hoy</span>
+                                <div class="value">8</div>
+                                <span class="sub text-blue">6 ya confirmadas</span>
+                            </div>
+                            <div class="pane-card bg-glass">
+                                <span>Stock Crítico</span>
+                                <div class="value text-warning">2</div>
+                                <span class="sub">Monturas de acetato</span>
+                            </div>
+                        </div>
+                        <div class="interactive-chart-box">
+                            <div class="chart-box-header">
+                                <h4>Metas de Venta Diaria</h4>
+                                <span class="percentage">75% Completado</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 75%"></div>
+                            </div>
+                            <p class="chart-desc">Meta de S/. 2,500.00. Haz clic en "Añadir Venta Simulada" para ver la
+                                barra y los totales reaccionar en tiempo real.</p>
+                            <button id="add-sale-btn" class="btn btn-primary btn-sm">Añadir Venta Simulada (+ S/.
+                                250)</button>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Pacientes -->
+                    <div class="tab-pane" id="pane-pacientes">
+                        <div class="pane-header">
+                            <h2>Buscador y Registro de Pacientes</h2>
+                            <p>Accede de inmediato a la ficha clínica y receta.</p>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" placeholder="Buscar por Nombre o DNI..." class="search-input"
+                                value="Carlos Mendoza" readonly>
+                            <button class="btn btn-primary btn-sm">Buscar</button>
+                        </div>
+                        <div class="patient-record-preview">
+                            <div class="record-header">
+                                <h3>Carlos Mendoza Ruiz</h3>
+                                <span>DNI: 47859612</span>
+                            </div>
+                            <div class="record-receta">
+                                <h4>Última Receta (Medida de Vista)</h4>
+                                <table class="receta-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ojo</th>
+                                            <th>Esfera</th>
+                                            <th>Cilindro</th>
+                                            <th>Eje</th>
+                                            <th>Adición</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>OD (Derecho)</td>
+                                            <td>-1.25</td>
+                                            <td>-0.50</td>
+                                            <td>180 grados</td>
+                                            <td>+2.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>OI (Izquierdo)</td>
+                                            <td>-1.50</td>
+                                            <td>-0.75</td>
+                                            <td>175 grados</td>
+                                            <td>+2.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Citas -->
+                    <div class="tab-pane" id="pane-citas">
+                        <div class="pane-header">
+                            <h2>Calendario de Citas y Envío de WhatsApp</h2>
+                            <p>Envía alertas sin salir de la aplicación.</p>
+                        </div>
+                        <div class="appointments-list">
+                            <div class="appointment-card-item">
+                                <div class="app-info">
+                                    <div class="time">09:00 AM</div>
+                                    <div class="name">Beatriz Salvatierra</div>
+                                    <div class="status-indicator current">Refracción</div>
+                                </div>
+                                <button class="btn btn-secondary btn-sm whatsapp-btn">
+                                    <span>Enviar Recordatorio</span>
+                                </button>
+                            </div>
+                            <div class="appointment-card-item">
+                                <div class="app-info">
+                                    <div class="time">11:30 AM</div>
+                                    <div class="name">Roberto Torres</div>
+                                    <div class="status-indicator">Control Mensual</div>
+                                </div>
+                                <button class="btn btn-secondary btn-sm whatsapp-btn">
+                                    <span>Enviar Recordatorio</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="whatsapp-log-alert" id="whatsapp-toast">
+                            Mensaje enviado con éxito.
+                        </div>
+                    </div>
+
+                    <!-- Tab: Ventas -->
+                    <div class="tab-pane" id="pane-ventas">
+                        <div class="pane-header">
+                            <h2>Módulo de Ventas y Facturación</h2>
+                            <p>Generación de comprobantes e integración SUNAT</p>
+                        </div>
+                        <div class="sales-preview-container">
+                            <div class="ticket-preview">
+                                <div class="ticket-header">
+                                    <h3>ÓPTICA VISO</h3>
+                                    <p>RUC: 20123456789</p>
+                                    <p>BOLETA ELECTRÓNICA: B001-000084</p>
+                                </div>
+                                <div class="ticket-divider">--------------------------------</div>
+                                <div class="ticket-items">
+                                    <div class="t-item">
+                                        <span>1 x Montura Acetato RayBan</span>
+                                        <span>S/. 350.00</span>
+                                    </div>
+                                    <div class="t-item">
+                                        <span>2 x Luna Resina c/Antirreflex</span>
+                                        <span>S/. 120.00</span>
+                                    </div>
+                                </div>
+                                <div class="ticket-divider">--------------------------------</div>
+                                <div class="ticket-totals">
+                                    <div class="total-row">
+                                        <span>IGV (18%):</span>
+                                        <span>S/. 71.69</span>
+                                    </div>
+                                    <div class="total-row font-bold">
+                                        <span>TOTAL:</span>
+                                        <span>S/. 470.00</span>
+                                    </div>
+                                </div>
+                                <div class="ticket-divider">--------------------------------</div>
+                                <div class="ticket-footer">
+                                    <p>Autorizado por SUNAT</p>
+                                    <p>Gracias por su confianza</p>
+                                </div>
+                            </div>
+                            <div class="sunat-controls">
+                                <button class="btn btn-primary" id="btn-sunat-send">Enviar Comprobante a SUNAT</button>
+                                <button class="btn btn-secondary" id="btn-ticket-print">Imprimir Ticket (80mm)</button>
+                                <div class="sunat-status" id="sunat-response-msg">Estado: Esperando envío...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why VISO / Benefits -->
+    <section id="why-choose" class="why-choose-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por qué elegir VISO?</h2>
+                <p class="section-subtitle">Diseñado con tecnología robusta y enfocado en la experiencia del usuario
+                    para garantizar un flujo de trabajo sin fricciones.</p>
+            </div>
+
+            <div class="benefits-row grid grid-3">
+                <div class="benefit-box">
+                    <div class="benefit-num">01</div>
+                    <h3>Rendimiento Ultra Veloz</h3>
+                    <p>Compilado de manera nativa para Windows (Python con Qt5). La aplicación se abre en menos de 2
+                        segundos y las búsquedas en la base de datos son instantáneas.</p>
+                </div>
+                <div class="benefit-box">
+                    <div class="benefit-num">02</div>
+                    <h3>Soporte Técnico de Primera</h3>
+                    <p>Contamos con actualizaciones constantes para adaptarnos a las normativas de la SUNAT y mejoras de
+                        seguridad del sistema operativo.</p>
+                </div>
+                <div class="benefit-box">
+                    <div class="benefit-num">03</div>
+                    <h3>Seguridad y Backups</h3>
+                    <p>Tus datos clínicos no se almacenan en servidores compartidos vulnerables. El sistema crea
+                        respaldos locales encriptados de forma diaria y automatizada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA Section -->
+    <section id="contact" class="contact-section">
+        <div class="container grid contact-grid">
+            <div class="contact-info">
+                <h2>¿Listo para modernizar tu óptica?</h2>
+                <p>Completa el formulario para agendar una demostración guiada y personalizada de VISO con uno de
+                    nuestros consultores. Responderemos todas tus dudas.</p>
+                <div class="contact-meta-list">
+                    <div class="contact-meta-item">
+                        <span class="icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </span>
+                        <span>contacto@visosoftware.com</span>
+                    </div>
+                    <div class="contact-meta-item">
+                        <span class="icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span>+51 987 654 321</span>
+                    </div>
+                    <div class="contact-meta-item">
+                        <span class="icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </span>
+                        <span>Lima, Perú</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="form-name">Nombre Completo</label>
+                        <input type="text" id="form-name" placeholder="Ej. Dr. Alejandro Gómez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-optica">Nombre de la Óptica</label>
+                        <input type="text" id="form-optica" placeholder="Ej. Óptica Visión Real" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-phone">Teléfono / WhatsApp</label>
+                        <input type="tel" id="form-phone" placeholder="Ej. +51 999 888 777" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-city">Ciudad / Región</label>
+                        <input type="text" id="form-city" placeholder="Ej. Lima / Arequipa" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Solicitar Demostración Gratis</button>
+                    <div class="form-success-msg" id="form-success">
+                        Gracias. Nos pondremos en contacto contigo vía WhatsApp o llamada telefónica a la brevedad.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.ico" alt="VISO Logo" class="logo-img">
+                <span>VISO Ópticas</span>
+            </div>
+            <p class="copyright">&copy; 2026 VISO. Todos los derechos reservados. Desarrollado con tecnología de
+                escritorio de alta eficiencia para el sector salud visual en Perú.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+
+</html>

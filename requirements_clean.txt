@@ -1,0 +1,50 @@
+# === VISO Optical Management System - Clean Dependencies ===
+
+# UI Framework
+PyQt5==5.15.11
+PyQt5-Qt5==5.15.2
+PyQt5_sip==12.17.0
+
+# PDF Generation & Reports
+reportlab==4.4.3
+pillow==11.3.0
+PyMuPDF==1.24.8
+
+# QR Code Generation
+qrcode==8.2
+
+# HTTP & Networking
+requests==2.32.5
+urllib3==2.5.0
+
+# Thermal Printer Support
+python-escpos==3.0.1
+pyserial==3.5
+
+# SFTP/SSH Support
+paramiko==3.4.0
+
+# Utilities
+num2words==0.5.14
+python-dateutil==2.9.0.post0
+psutil==6.2.0
+colorama==0.4.6
+
+# AI/Chatbot (Optional - can be commented out if not using)
+anthropic==0.16.1
+
+# Build Tools
+PyInstaller==6.16.0
+pyinstaller-hooks-contrib==2025.8
+pefile==2023.2.7
+pywin32-ctypes==0.2.3
+setuptools==80.9.0
+
+# Type Checking & Validation
+pydantic==2.11.9
+pydantic_core==2.33.2
+typing_extensions==4.15.0
+
+# Utilities
+tqdm==4.67.1
+certifi==2025.8.3

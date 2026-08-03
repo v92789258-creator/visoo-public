@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Círculo del paciente (cabeza) -->
+    <circle cx="8" cy="5" r="2.5" fill="white"/>
+    <!-- Cuerpo del paciente (forma simplificada) -->
+    <path d="M4.5 12.5v-1.5a3.5 3.5 0 017 0v1.5" stroke="white" stroke-width="1.5"/>
+    <!-- Símbolo + pequeño -->
+    <rect x="11" y="11" width="4" height="4" rx="2" fill="white"/>
+    <path d="M13 12v2M12 13h2" stroke="#191919" stroke-width="1" stroke-linecap="round"/>
+</svg>

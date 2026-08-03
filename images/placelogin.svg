@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="800" viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo degradado azul -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2196F3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#64B5F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#42A5F5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo principal -->
+  <rect width="600" height="800" fill="url(#bgGradient)"/>
+  
+  <!-- Formas geométricas decorativas -->
+  <circle cx="500" cy="-100" r="300" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="-100" cy="700" r="250" fill="rgba(255,255,255,0.08)"/>
+  <rect x="50" y="100" width="500" height="2" fill="rgba(255,255,255,0.2)"/>
+  
+  <!-- Icono principal - Lentes oftálmicos -->
+  <g transform="translate(300, 250)">
+    <!-- Marco izquierdo -->
+    <ellipse cx="-80" cy="0" rx="50" ry="60" fill="none" stroke="white" stroke-width="8"/>
+    <!-- Marco derecho -->
+    <ellipse cx="80" cy="0" rx="50" ry="60" fill="none" stroke="white" stroke-width="8"/>
+    <!-- Puente -->
+    <line x1="-30" y1="0" x2="30" y2="0" stroke="white" stroke-width="8"/>
+    
+    <!-- Cristales con brillo -->
+    <circle cx="-80" cy="0" r="35" fill="rgba(100, 181, 246, 0.6)" stroke="white" stroke-width="4"/>
+    <circle cx="80" cy="0" r="35" fill="rgba(100, 181, 246, 0.6)" stroke="white" stroke-width="4"/>
+    
+    <!-- Puntos de brillo -->
+    <circle cx="-95" cy="-20" r="8" fill="white" opacity="0.7"/>
+    <circle cx="65" cy="-20" r="8" fill="white" opacity="0.7"/>
+  </g>
+  
+  <!-- Texto "VISO" -->
+  <text x="300" y="420" font-size="60" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial, sans-serif">
+    VISO
+  </text>
+  
+  <!-- Subtítulo -->
+  <text x="300" y="480" font-size="24" fill="rgba(255,255,255,0.9)" text-anchor="middle" font-family="Arial, sans-serif">
+    Sistema de Gestión Óptica
+  </text>
+  
+  <!-- Línea decorativa -->
+  <line x1="150" y1="520" x2="450" y2="520" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+  
+  <!-- Descripción -->
+  <text x="300" y="580" font-size="16" fill="rgba(255,255,255,0.8)" text-anchor="middle" font-family="Arial, sans-serif">
+    Gestiona tu inventario, clientes y ventas
+  </text>
+  
+  <!-- Iconos pequeños al pie -->
+  <g transform="translate(150, 680)">
+    <!-- Icono inventario -->
+    <rect x="0" y="0" width="40" height="40" fill="rgba(255,255,255,0.2)" rx="8"/>
+    <text x="20" y="28" font-size="24" fill="white" text-anchor="middle">📦</text>
+  </g>
+  
+  <g transform="translate(280, 680)">
+    <!-- Icono clientes -->
+    <rect x="0" y="0" width="40" height="40" fill="rgba(255,255,255,0.2)" rx="8"/>
+    <text x="20" y="28" font-size="24" fill="white" text-anchor="middle">👥</text>
+  </g>
+  
+  <g transform="translate(410, 680)">
+    <!-- Icono ventas -->
+    <rect x="0" y="0" width="40" height="40" fill="rgba(255,255,255,0.2)" rx="8"/>
+    <text x="20" y="28" font-size="24" fill="white" text-anchor="middle">💰</text>
+  </g>
+</svg>

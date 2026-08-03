@@ -1,0 +1,2 @@
+[tool.pylance]
+include = ["gui", "utils"]

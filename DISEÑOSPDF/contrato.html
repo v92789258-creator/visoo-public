@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Contrato Óptico</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#e5e5e5;
+  font-family:Arial, Helvetica, sans-serif;
+  color:#263f91;
+}
+
+.print-btn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:#263f91;
+  color:#fff;
+  border:0;
+  border-radius:6px;
+  padding:10px 16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.hoja{
+  width:794px;
+  min-height:1123px;
+  margin:20px auto;
+  background:#eef5f1;
+  padding:38px 42px;
+}
+
+.contrato{
+  border:3px solid #304da5;
+  padding:22px 26px;
+  min-height:720px;
+  position:relative;
+}
+
+.header{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:20px;
+  align-items:start;
+}
+
+.empresa{
+  text-align:center;
+  min-height:130px;
+  font-size:13px;
+  line-height:1.25;
+}
+
+.empresa h1{
+  margin:0 0 4px;
+  font-size:17px;
+  font-weight:normal;
+}
+
+.empresa h2{
+  margin:8px 0 4px;
+  font-size:20px;
+  letter-spacing:1px;
+}
+
+.empresa p{
+  margin:2px 0;
+}
+
+.box-contrato{
+  border:2px solid #304da5;
+  margin-top:70px;
+  text-align:center;
+}
+
+.box-contrato .titulo{
+  font-size:24px;
+  font-weight:bold;
+  border-bottom:2px solid #304da5;
+  padding:5px;
+}
+
+.box-contrato .numero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding:12px 8px;
+  font-size:20px;
+}
+
+.red{
+  color:#b33434;
+  font-weight:bold;
+}
+
+.formulario{
+  margin-top:44px;
+  font-size:16px;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:85px 1fr 55px 190px;
+  align-items:end;
+  gap:8px;
+  margin-bottom:14px;
+}
+
+.row.full{
+  grid-template-columns:95px 1fr;
+}
+
+.label{
+  font-weight:normal;
+}
+
+.linea{
+  border-bottom:2px dotted #304da5;
+  min-height:25px;
+}
+
+.montura{
+  display:grid;
+  grid-template-columns:95px 1fr;
+  align-items:end;
+  gap:8px;
+  margin-bottom:10px;
+}
+
+.medidas-wrap{
+  display:grid;
+  grid-template-columns:65px 1fr;
+  align-items:end;
+}
+
+.ojos{
+  padding-top:30px;
+  display:grid;
+  grid-template-rows:38px 38px 38px 38px;
+  font-weight:bold;
+  font-size:17px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.medidas th,
+.medidas td{
+  border:2px solid #304da5;
+  height:38px;
+  text-align:center;
+  font-size:16px;
+}
+
+.medidas th{
+  height:26px;
+  font-weight:bold;
+}
+
+.detalle{
+  margin-top:24px;
+}
+
+.detalle-row{
+  display:grid;
+  grid-template-columns:120px 1fr 80px 1fr 70px 1fr;
+  gap:6px;
+  align-items:end;
+  margin-bottom:18px;
+}
+
+.detalle-row.two{
+  grid-template-columns:150px 1fr 80px 1fr;
+}
+
+.detalle-row.full{
+  grid-template-columns:145px 1fr;
+}
+
+.entrega{
+  display:grid;
+  grid-template-columns:90px 170px 100px 1fr;
+  gap:8px;
+  align-items:end;
+  margin-top:22px;
+}
+
+.totales{
+  display:grid;
+  grid-template-columns:70px 1fr 65px 1fr 70px 1fr;
+  gap:8px;
+  align-items:end;
+  margin-top:42px;
+  font-size:18px;
+}
+
+.linea-solida{
+  border-bottom:2px solid #304da5;
+  min-height:28px;
+}
+
+@media print{
+  @page{size:A4;margin:0}
+  body{background:white}
+  .print-btn{display:none}
+  .hoja{margin:0}
+}
+</style>
+</head>
+
+<body>
+
+<button class="print-btn" onclick="window.print()">Descargar PDF</button>
+
+<div class="hoja">
+  <div class="contrato">
+
+    <div class="header">
+      <div class="empresa">
+        <h1>Bertha Llamocca Aguayo</h1>
+        <p>Venta de Monturas, Gafas de sol, Lentes de Contacto</p>
+        <p>Policarbonato en las Mejores Marcas y Repuestos en General</p>
+        <h2>LENTES INTELIGENTES - IA</h2>
+        <p>Av. Bolivia N° 982 Int. 118 Galería Guimo - Lima - Lima</p>
+        <p>TIENDA PRINCIPAL 140</p>
+        <p>990 314 376 / 952 409 026 / 932 386 703</p>
+      </div>
+
+      <div class="box-contrato">
+        <div class="titulo">CONTRATO</div>
+        <div class="numero">
+          <span>0001</span>
+          <span class="red">N° 005388</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="formulario">
+
+      <div class="row">
+        <div class="label">FECHA:</div>
+        <div class="linea"></div>
+        <div class="label">Telf:</div>
+        <div class="linea"></div>
+      </div>
+
+      <div class="row full">
+        <div class="label">Señor (es):</div>
+        <div class="linea"></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Dirección:</div>
+        <div class="linea"></div>
+        <div class="label">Telf:</div>
+        <div class="linea"></div>
+      </div>
+
+      <div class="montura">
+        <div class="label">Montura:</div>
+        <div class="linea"></div>
+      </div>
+
+      <div class="medidas-wrap">
+        <div class="ojos">
+          <div>O.D.</div>
+          <div>O.I.</div>
+          <div>O.D.</div>
+          <div>O.I.</div>
+        </div>
+
+        <table class="medidas">
+          <thead>
+            <tr>
+              <th>ESF.</th>
+              <th>CIL.</th>
+              <th>EJE</th>
+              <th>D.I.P.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="detalle">
+
+        <div class="detalle-row">
+          <div>CRISTALES:</div>
+          <div class="linea"></div>
+          <div>RESINA:</div>
+          <div class="linea"></div>
+          <div>COLOR:</div>
+          <div class="linea"></div>
+        </div>
+
+        <div class="detalle-row two">
+          <div>BIFOCALES TIPO:</div>
+          <div class="linea"></div>
+          <div>ALTURA:</div>
+          <div class="linea"></div>
+        </div>
+
+        <div class="detalle-row full">
+          <div>MULTIFOCAL TIPO:</div>
+          <div class="linea"></div>
+        </div>
+
+        <div class="detalle-row full">
+          <div>OTROS:</div>
+          <div class="linea"></div>
+        </div>
+
+      </div>
+
+      <div class="entrega">
+        <div>ENTREGA</div>
+        <div class="linea-solida"></div>
+        <div>VENDEDOR:</div>
+        <div class="linea-solida"></div>
+      </div>
+
+      <div class="totales">
+        <div>TOTAL:</div>
+        <div class="linea-solida"></div>
+        <div>A CTA:</div>
+        <div class="linea-solida"></div>
+        <div>SALDO:</div>
+        <div class="linea-solida"></div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

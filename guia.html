@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Guía de Remisión</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  font-family:Arial,sans-serif;
+  margin:0;
+  background:white;
+  color:#000;
+}
+
+.guia{
+  width:794px;
+  min-height:1123px;
+  margin:auto;
+  padding:18px 15px;
+  font-size:11px;
+}
+
+.header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+
+.logo{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  background:#222;
+  color:white;
+  border:4px solid #e6b400;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-weight:bold;
+  font-size:18px;
+}
+
+.empresa{
+  text-align:center;
+  width:430px;
+  font-size:11px;
+}
+
+.empresa h1{
+  font-size:17px;
+  margin:2px 0 0;
+}
+
+.empresa h2{
+  font-size:11px;
+  margin:0;
+}
+
+.box-ruc{
+  width:260px;
+  border:1.5px solid #000;
+  border-radius:9px;
+  text-align:center;
+  padding:15px 8px;
+  font-weight:bold;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:35px;
+  margin-top:25px;
+}
+
+.info p{
+  margin:6px 0;
+}
+
+b{
+  font-weight:800;
+}
+
+.motivo{
+  margin-top:20px;
+}
+
+.green-box{
+  border:1px solid #2c8b35;
+  border-radius:3px;
+  padding:4px;
+}
+
+.checks{
+  display:grid;
+  grid-template-columns:90px 255px 80px 1fr;
+  gap:4px 10px;
+}
+
+.check{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.square{
+  width:10px;
+  height:10px;
+  border:1px solid #555;
+  display:inline-block;
+  position:relative;
+}
+
+.square.on:after{
+  content:"✓";
+  position:absolute;
+  top:-6px;
+  left:0;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.section-title{
+  font-weight:bold;
+  margin-top:8px;
+  margin-bottom:3px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  border:1px solid #000;
+  padding:4px;
+  text-align:center;
+  vertical-align:top;
+}
+
+th{
+  font-size:11px;
+}
+
+.detalle td{
+  height:28px;
+}
+
+.desc{
+  text-align:left;
+}
+
+.empty-row td{
+  height:100px;
+}
+
+.transporte{
+  margin-top:10px;
+}
+
+.transport-grid{
+  display:grid;
+  grid-template-columns:1fr 400px;
+  gap:10px;
+}
+
+.line-box{
+  border:1px solid #2c8b35;
+  border-radius:4px;
+  min-height:20px;
+  padding:3px 6px;
+  line-height:1.2;
+}
+
+.obs{
+  border:1px solid #2c8b35;
+  border-radius:4px;
+  padding:5px 6px;
+  min-height:48px;
+  line-height:1.35;
+}
+
+.footer{
+  display:grid;
+  grid-template-columns:230px 1fr;
+  margin-top:30px;
+  align-items:start;
+}
+
+.qr{
+  width:105px;
+  height:105px;
+  background:repeating-linear-gradient(
+    45deg,
+    #000 0 5px,
+    #fff 5px 10px
+  );
+  margin-bottom:12px;
+}
+
+.firma{
+  border:1.5px solid #000;
+  border-radius:9px;
+  height:100px;
+  padding-top:45px;
+  font-size:11px;
+}
+
+.firma-line{
+  border-top:1px dashed #555;
+  margin:0 5px;
+  padding-left:220px;
+  padding-top:4px;
+}
+
+.notice{
+  text-align:center;
+  font-weight:bold;
+  font-size:15px;
+  line-height:1.1;
+  margin-top:8px;
+}
+
+.legal{
+  border-top:1px solid #000;
+  margin-top:10px;
+  padding-top:6px;
+  font-size:9px;
+}
+
+.mifact{
+  font-size:9px;
+  margin-top:8px;
+}
+
+.print-btn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  padding:10px 18px;
+  background:#0ea5e9;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+@media print{
+  .print-btn{
+    display:none;
+  }
+
+  body{
+    margin:0;
+  }
+
+  .guia{
+    margin:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<button class="print-btn" onclick="window.print()">Descargar PDF</button>
+
+<div class="guia">
+
+  <div class="header">
+    <div class="logo">
+      TU<br>LOGO<br>AQUÍ
+    </div>
+
+    <div class="empresa">
+      <h1>MULTIDISTRIBUCIONES</h1>
+      <h2>EMPRESA SIMPLE SAC</h2>
+      <div>
+        Dirección fiscal : Manzana X lote 5 (1er.piso) Urb.Covicorti Trujillo -<br>
+        Trujillo - La Libertad<br>
+        Sucursal : Av. Húsares de Junín 1248 Urb.La Merced III Trujillo -<br>
+        Trujillo- La Libertad
+      </div>
+    </div>
+
+    <div class="box-ruc">
+      R.U.C. 20200200200<br>
+      GUÍA DE REMISIÓN<br>
+      ELECTRÓNICA REMITENTE<br>
+      N° TS01 - 00000022
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="info">
+      <p><b>Fecha de inicio de traslado:</b> 20/09/2024</p>
+      <p><b>Destinatario</b> JAYCO SOCIEDAD ANONIMA CERRADA</p>
+      <p><b>RUC</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20602640281</p>
+    </div>
+
+    <div class="info">
+      <p><b>Punto de partida</b> &nbsp;&nbsp;&nbsp;&nbsp;150141 - AV LOS GERANIOS 330</p>
+      <p>
+        <b>Punto de llegada</b> &nbsp;&nbsp;&nbsp;&nbsp;150140 - AV. CAMINOS DEL INCA NRO. 3140 DPTO. 401 URB.<br>
+        PROLONGACION BENAVIDES - LIMA LIMA SANTIAGO DE SURCO
+      </p>
+    </div>
+  </div>
+
+  <div class="motivo">
+    <b>Motivo de traslado</b>
+
+    <div class="green-box checks">
+      <div class="check"><span class="square on"></span>Venta</div>
+      <div class="check"><span class="square"></span>Venta sujeta a confirmacion del comprador</div>
+      <div class="check"><span class="square"></span>Compra</div>
+      <div class="check"><span class="square"></span>Traslado entre establecimientos de la misma</div>
+
+      <div class="check"><span class="square"></span>Importacion</div>
+      <div class="check"><span class="square"></span>Traslado emisor itinerante CP</div>
+      <div class="check"><span class="square"></span>Exportacion</div>
+      <div class="check"><span class="square"></span>Traslado a zona primaria</div>
+
+      <div class="check"><span class="square"></span>Otros</div>
+    </div>
+  </div>
+
+  <div class="section-title">Datos del bien transportado</div>
+
+  <table class="detalle">
+    <thead>
+      <tr>
+        <th style="width:50px">N°</th>
+        <th style="width:70px">CÓDIGO</th>
+        <th>DESCRIPCIÓN</th>
+        <th style="width:85px">MARCA</th>
+        <th style="width:80px">P. UNIT.</th>
+        <th style="width:65px">CANTIDAD</th>
+        <th style="width:70px">UNIDAD DE<br>DESPACHO</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>CF-001</td>
+        <td class="desc">MONTURA OFTÁLMICA ACETATO MODELO CLÁSICO NEGRO</td>
+        <td>RAYBAN</td>
+        <td>120.00</td>
+        <td>120</td>
+        <td>UNIDAD</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>CF-002</td>
+        <td class="desc">MONTURA OFTÁLMICA METAL MODELO DORADO FLEX</td>
+        <td>VOGUE</td>
+        <td>85.00</td>
+        <td>85</td>
+        <td>UNIDAD</td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td>CF-003</td>
+        <td class="desc">LUNA MONOFOCAL BLANCA CR-39 1.56</td>
+        <td>HOYA</td>
+        <td>300.00</td>
+        <td>300</td>
+        <td>PAR</td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td>CF-004</td>
+        <td class="desc">LUNA BLUE BLOCK ANTIRREFLEJO 1.56</td>
+        <td>ESSILOR</td>
+        <td>250.00</td>
+        <td>250</td>
+        <td>PAR</td>
+      </tr>
+
+      <tr>
+        <td>5</td>
+        <td>CF-005</td>
+        <td class="desc">LUNA FOTOCROMÁTICA GRIS 1.56</td>
+        <td>HOYA</td>
+        <td>180.00</td>
+        <td>180</td>
+        <td>PAR</td>
+      </tr>
+
+      <tr>
+        <td>6</td>
+        <td>CF-006</td>
+        <td class="desc">ESTUCHE RÍGIDO PARA LENTES COLOR NEGRO</td>
+        <td>GENERICA</td>
+        <td>500.00</td>
+        <td>500</td>
+        <td>UNIDAD</td>
+      </tr>
+
+      <tr>
+        <td>7</td>
+        <td>CF-007</td>
+        <td class="desc">PAÑO MICROFIBRA PARA LIMPIEZA DE LENTES</td>
+        <td>GENERICA</td>
+        <td>1000.00</td>
+        <td>1000</td>
+        <td>UNIDAD</td>
+      </tr>
+
+      <tr>
+        <td>8</td>
+        <td>CF-008</td>
+        <td class="desc">SPRAY LIMPIADOR DE LENTES 60ML</td>
+        <td>GENERICA</td>
+        <td>350.00</td>
+        <td>350</td>
+        <td>UNIDAD</td>
+      </tr>
+
+      <tr>
+        <td>9</td>
+        <td>CF-009</td>
+        <td class="desc">CORDÓN SUJETADOR PARA LENTES MODELO SPORT</td>
+        <td>GENERICA</td>
+        <td>220.00</td>
+        <td>220</td>
+        <td>UNIDAD</td>
+      </tr>
+
+      <tr>
+        <td>10</td>
+        <td>CF-010</td>
+        <td class="desc">MONTURA SOLAR UV400 MODELO AVIADOR</td>
+        <td>RAYBAN</td>
+        <td>140.00</td>
+        <td>140</td>
+        <td>UNIDAD</td>
+      </tr>
+
+      <tr class="empty-row">
+        <td colspan="7"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="transporte">
+    <b>UNIDAD DE TRANSPORTE Y CONDUCTOR</b>
+
+    <div class="transport-grid">
+      <div class="line-box">
+        <b>Placa del vehículo</b>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <b>DNI del Conductor:</b>
+      </div>
+
+      <div class="line-box">
+        <b>Modalidad de transporte:</b>
+        &nbsp;&nbsp;
+        TRANSPORTE PRIVADO
+      </div>
+    </div>
+
+    <div class="transport-grid" style="margin-top:4px;">
+      <div class="obs">
+        <div><b>Observaciones</b></div>
+        <div><b>Doc. Referencia:</b> Factura:F001-00000067</div>
+      </div>
+
+      <div class="line-box">
+        <b>Peso Total Aprox. (KGM):</b>
+        &nbsp;&nbsp;
+        85
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>
+      <div class="qr"></div>
+
+      <div>
+        Representación Impresa de la <b>GUIA DE REMISIÓN ELECTRÓNICA</b><br>
+        Autorizado mediante Resolución <b>0340050007241</b>
+      </div>
+
+      <div class="notice">
+        GRACIAS POR SU COMPRA!<br>
+        ** NOTA IMPORTANTE**<br>
+        NO SE ACEPTAN DEVOLUCIONES
+      </div>
+    </div>
+
+    <div class="firma">
+      <div class="firma-line">
+        Conformidad del cliente :<br>
+        Nombre :<br>
+        DNI:
+      </div>
+    </div>
+  </div>
+
+  <div class="legal">
+    LA MERCADERIA VIAJA POR CUENTA Y RIESGO DEL COMPRADOR NO ADMITIMOS RECLAMO POR ROBO O AVERIA
+  </div>
+
+  <div class="mifact">
+    Documento diseñado por <b>Viso</b>
+  </div>
+
+</div>
+
+</body>
+</html>

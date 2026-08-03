@@ -1,0 +1,271 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so may be deleted later.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the Python version is individual to the developer.
+# .python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if you want to keep dependencies within the platform-specific range
+# Pipfile.lock
+
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+# poetry.lock
+
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+# pdm.lock
+
+# PEP 582; used by e.g. github.com/pypa/pdm
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Project specific ignores
+VISO/temp/
+VISO/*/data/
+VISO/audit/
+VISO/.sync_queue.db
+VISO/.device_lock/
+VISO/.sessions/
+VISO2/
+VISOO/
+VISOv/
+*.exe
+*.pdf
+*.png
+local_backups/
+php/api/win/new/upload_device_snapshot.php
+php/_cloud_common.php
+config_license.py
+
+# VISO datos sensibles
+VISO/.lic
+VISO/.sync_queue.db
+VISO/sesion.txt
+VISO/.device_lock/
+VISO/__basic_nav__/
+VISO/*/branch_cache/
+VISO/*/migration/
+VISO/*/data/
+VISO/data/
+
+# basura compilada
+__pycache__/
+*/__pycache__/
+*.pyc
+build/
+dist/
+*.exe
+*.spec
+*.db
+*.jsonl
+*.log
+
+# Public-release safety: never publish local state, credentials, backups, or build output
+.backup_original_code/
+dist_cpp/
+dist_nuitka*/
+tmp_*/
+TERMINE-FIN-DE/
+local_backups/
+VISO/
+gui/VISO/
+_internal/
+*.lic
+*.manifest.json
+*.zip
+*.xlsx
+*.csv
+*.db*
+*.log
+*.jsonl
+*.pyc
+*.pyo
+config_printer_port.txt
+config_license.py
+sesion*
+usuarios*
+upload.json
+backup_schedule.json
+device_lock.json
+terms_accepted.json
+gemini.js
+diag_login.py
+find_test_user.py
+get_clientes_schema.py
+test_login_endpoints.py
+test_login.php
+upload_all.py
+upload_files_to_hostinger.py
+nuitka-crash-report.xml
+KKK.MD
+python
+
+# Diagnostic, upload, migration, and local-maintenance scripts
+debug_*.py
+diag_*.py
+diagnose_*.py
+find_*.py
+get_*.py
+download_logs.py
+monitor_*.py
+cleanup_*.py
+emergency_*.py
+verify_*.py
+check_*.py
+test_*.py
+test_*.bat
+upload_*.py
+export_*.py
+schedule_backup.py
+build_log.txt
+utils/file_handler_broken.py
+utils/file_handler_clean.py
+php/CREAR_CLAVE_PHP_CORREGIDO.php
+php/api/win/new/admin_panel.php
+php/win/new/prueba.py
+**/_cloud_common.php
+
+# Other generated artifacts
+csharp/obj/
+csharp/bin/
+**/obj/
+**/bin/
+test_images/
+php/debug_*.php
+php/test_*.php
+php/test-*.php
+php/upload_*.php
+CARTA_IMPLEMENTACION_COMPLETA.txt
+setup_license_db.py
+*.backup*
+*.pid
+build*.log

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Presupuestos y Gastos</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f7fb;
+    margin: 0;
+    padding: 25px;
+}
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #0284c7;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+button {
+    background: #0ea5e9;
+    color: white;
+    border: none;
+    padding: 11px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 4px;
+}
+
+button:hover {
+    background: #0369a1;
+}
+
+.delete {
+    background: #ef4444;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.box {
+    background: #e0f2fe;
+    padding: 15px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.box h3 {
+    margin: 0;
+    color: #0369a1;
+}
+
+.box p {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.budget-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 15px;
+    background: #fafafa;
+}
+
+.positivo {
+    color: #16a34a;
+}
+
+.negativo {
+    color: #dc2626;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+canvas {
+    margin-top: 25px;
+    max-height: 320px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Control de Presupuestos</h1>
+
+    <div class="card">
+        <h2>Crear presupuesto</h2>
+        <input type="text" id="nombrePresupuesto" placeholder="Ejemplo: Moto, comida, VISO, ahorro">
+        <input type="number" id="montoPresupuesto" placeholder="Monto inicial S/">
+        <button onclick="crearPresupuesto()">Crear presupuesto</button>
+    </div>
+
+    <div class="card">
+        <h2>Añadir dinero a un presupuesto</h2>
+        <select id="selectIngreso"></select>
+        <input type="number" id="montoIngreso" placeholder="Monto a añadir S/">
+        <button onclick="agregarIngreso()">Añadir monto</button>
+    </div>
+
+    <div class="card">
+        <h2>Añadir gasto a un presupuesto</h2>
+        <select id="selectGasto"></select>
+        <input type="text" id="nombreGasto" placeholder="Nombre del gasto">
+        <input type="number" id="montoGasto" placeholder="Monto del gasto S/">
+        <button onclick="agregarGasto()">Añadir gasto</button>
+    </div>
+
+    <div class="card">
+        <h2>Resumen general</h2>
+        <div class="grid">
+            <div class="box">
+                <h3>Total presupuestado</h3>
+                <p id="totalPresupuesto">S/ 0.00</p>
+            </div>
+            <div class="box">
+                <h3>Total gastado</h3>
+                <p id="totalGastado">S/ 0.00</p>
+            </div>
+            <div class="box">
+                <h3>Total disponible</h3>
+                <p id="totalDisponible">S/ 0.00</p>
+            </div>
+            <div class="box">
+                <h3>% gastado</h3>
+                <p id="porcentajeGastado">0%</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Mis presupuestos</h2>
+        <div id="listaPresupuestos"></div>
+    </div>
+
+    <div class="card">
+        <h2>Gráficos</h2>
+        <canvas id="graficoPresupuestos"></canvas>
+        <canvas id="graficoGastos"></canvas>
+    </div>
+</div>
+
+<script>
+let presupuestos = [];
+let graficoPresupuestos = null;
+let graficoGastos = null;
+
+function crearPresupuesto() {
+    const nombre = document.getElementById("nombrePresupuesto").value.trim();
+    const monto = parseFloat(document.getElementById("montoPresupuesto").value);
+
+    if (!nombre || isNaN(monto) || monto <= 0) {
+        alert("Pon nombre y monto válido pe xd");
+        return;
+    }
+
+    presupuestos.push({
+        nombre: nombre,
+        ingresos: [{ nombre: "Monto inicial", monto: monto }],
+        gastos: []
+    });
+
+    document.getElementById("nombrePresupuesto").value = "";
+    document.getElementById("montoPresupuesto").value = "";
+
+    actualizarTodo();
+}
+
+function agregarIngreso() {
+    const index = document.getElementById("selectIngreso").value;
+    const monto = parseFloat(document.getElementById("montoIngreso").value);
+
+    if (index === "" || isNaN(monto) || monto <= 0) {
+        alert("Selecciona presupuesto y monto válido");
+        return;
+    }
+
+    presupuestos[index].ingresos.push({
+        nombre: "Ingreso añadido",
+        monto: monto
+    });
+
+    document.getElementById("montoIngreso").value = "";
+    actualizarTodo();
+}
+
+function agregarGasto() {
+    const index = document.getElementById("selectGasto").value;
+    const nombre = document.getElementById("nombreGasto").value.trim();
+    const monto = parseFloat(document.getElementById("montoGasto").value);
+
+    if (index === "" || !nombre || isNaN(monto) || monto <= 0) {
+        alert("Completa bien el gasto causa");
+        return;
+    }
+
+    presupuestos[index].gastos.push({
+        nombre: nombre,
+        monto: monto
+    });
+
+    document.getElementById("nombreGasto").value = "";
+    document.getElementById("montoGasto").value = "";
+
+    actualizarTodo();
+}
+
+function eliminarPresupuesto(index) {
+    presupuestos.splice(index, 1);
+    actualizarTodo();
+}
+
+function eliminarGasto(indexPresupuesto, indexGasto) {
+    presupuestos[indexPresupuesto].gastos.splice(indexGasto, 1);
+    actualizarTodo();
+}
+
+function totalIngresos(p) {
+    return p.ingresos.reduce((sum, i) => sum + i.monto, 0);
+}
+
+function totalGastos(p) {
+    return p.gastos.reduce((sum, g) => sum + g.monto, 0);
+}
+
+function actualizarSelects() {
+    const selectIngreso = document.getElementById("selectIngreso");
+    const selectGasto = document.getElementById("selectGasto");
+
+    selectIngreso.innerHTML = "";
+    selectGasto.innerHTML = "";
+
+    presupuestos.forEach((p, index) => {
+        selectIngreso.innerHTML += `<option value="${index}">${p.nombre}</option>`;
+        selectGasto.innerHTML += `<option value="${index}">${p.nombre}</option>`;
+    });
+}
+
+function mostrarPresupuestos() {
+    const lista = document.getElementById("listaPresupuestos");
+    lista.innerHTML = "";
+
+    presupuestos.forEach((p, index) => {
+        const ingresos = totalIngresos(p);
+        const gastos = totalGastos(p);
+        const disponible = ingresos - gastos;
+        const porcentaje = ingresos > 0 ? (gastos / ingresos) * 100 : 0;
+
+        let gastosHTML = "";
+
+        p.gastos.forEach((g, i) => {
+            gastosHTML += `
+                <tr>
+                    <td>${g.nombre}</td>
+                    <td>S/ ${g.monto.toFixed(2)}</td>
+                    <td>
+                        <button class="delete" onclick="eliminarGasto(${index}, ${i})">Eliminar</button>
+                    </td>
+                </tr>
+            `;
+        });
+
+        lista.innerHTML += `
+            <div class="budget-card">
+                <h3>${p.nombre}</h3>
+                <p><b>Presupuesto total:</b> S/ ${ingresos.toFixed(2)}</p>
+                <p><b>Gastado:</b> S/ ${gastos.toFixed(2)}</p>
+                <p><b>Disponible:</b> 
+                    <span class="${disponible >= 0 ? 'positivo' : 'negativo'}">
+                        S/ ${disponible.toFixed(2)}
+                    </span>
+                </p>
+                <p><b>Usado:</b> ${porcentaje.toFixed(1)}%</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Gasto</th>
+                            <th>Monto</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${gastosHTML || `<tr><td colspan="3">Sin gastos todavía</td></tr>`}
+                    </tbody>
+                </table>
+
+                <button class="delete" onclick="eliminarPresupuesto(${index})">Eliminar presupuesto</button>
+            </div>
+        `;
+    });
+}
+
+function actualizarResumen() {
+    let totalP = 0;
+    let totalG = 0;
+
+    presupuestos.forEach(p => {
+        totalP += totalIngresos(p);
+        totalG += totalGastos(p);
+    });
+
+    const disponible = totalP - totalG;
+    const porcentaje = totalP > 0 ? (totalG / totalP) * 100 : 0;
+
+    document.getElementById("totalPresupuesto").textContent = `S/ ${totalP.toFixed(2)}`;
+    document.getElementById("totalGastado").textContent = `S/ ${totalG.toFixed(2)}`;
+
+    const disp = document.getElementById("totalDisponible");
+    disp.textContent = `S/ ${disponible.toFixed(2)}`;
+    disp.className = disponible >= 0 ? "positivo" : "negativo";
+
+    document.getElementById("porcentajeGastado").textContent = `${porcentaje.toFixed(1)}%`;
+}
+
+function actualizarGraficos() {
+    if (graficoPresupuestos) graficoPresupuestos.destroy();
+    if (graficoGastos) graficoGastos.destroy();
+
+    const nombres = presupuestos.map(p => p.nombre);
+    const montosPresupuesto = presupuestos.map(p => totalIngresos(p));
+    const montosGastos = presupuestos.map(p => totalGastos(p));
+
+    graficoPresupuestos = new Chart(document.getElementById("graficoPresupuestos"), {
+        type: "bar",
+        data: {
+            labels: nombres,
+            datasets: [{
+                label: "Presupuesto total",
+                data: montosPresupuesto,
+                backgroundColor: "#0ea5e9"
+            }]
+        }
+    });
+
+    graficoGastos = new Chart(document.getElementById("graficoGastos"), {
+        type: "doughnut",
+        data: {
+            labels: nombres,
+            datasets: [{
+                label: "Gastos por presupuesto",
+                data: montosGastos,
+                backgroundColor: [
+                    "#0ea5e9",
+                    "#22c55e",
+                    "#f97316",
+                    "#ef4444",
+                    "#8b5cf6",
+                    "#14b8a6"
+                ]
+            }]
+        }
+    });
+}
+
+function actualizarTodo() {
+    actualizarSelects();
+    mostrarPresupuestos();
+    actualizarResumen();
+    actualizarGraficos();
+}
+</script>
+
+</body>
+</html>

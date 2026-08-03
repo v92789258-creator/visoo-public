@@ -1,0 +1,354 @@
+<section class="viso-editorial-carousel">
+    <div class="viso-left">
+        <p class="viso-kicker">Módulos de VISO</p>
+        <h2 id="moduleTitle">Pacientes y recetas</h2>
+        <p id="moduleText">
+            Registra pacientes, medidas ópticas, historial y recetas en un flujo claro.
+        </p>
+
+        <div class="viso-actions">
+            <button id="prevBtn">Anterior</button>
+            <button id="nextBtn">Siguiente</button>
+        </div>
+
+        <div class="viso-counter">
+            <span id="currentSlide">01</span>
+            <span>/</span>
+            <span id="totalSlides">04</span>
+        </div>
+    </div>
+
+    <div class="viso-right">
+        <div class="viso-svg-wrap" id="svgContainer"></div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+
+
+
+
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Inter, system-ui, sans-serif;
+        background: #f7f7f4;
+        color: #0c1324;
+    }
+
+    .viso-editorial-carousel {
+        min-height: 720px;
+        display: grid;
+        grid-template-columns: 42% 58%;
+        border-top: 1px solid #d8d8d0;
+        border-bottom: 1px solid #d8d8d0;
+    }
+
+    .viso-left {
+        padding: 90px 70px;
+        border-right: 1px solid #d8d8d0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .viso-kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 13px;
+        font-weight: 800;
+        color: #4361ee;
+        margin-bottom: 28px;
+    }
+
+    .viso-left h2 {
+        font-size: clamp(48px, 6vw, 86px);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+        margin: 0 0 32px;
+        max-width: 620px;
+    }
+
+    .viso-left p {
+        font-size: 21px;
+        line-height: 1.65;
+        color: #536078;
+        max-width: 520px;
+    }
+
+    .viso-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 46px;
+    }
+
+    .viso-actions button {
+        border: 1px solid #0c1324;
+        background: transparent;
+        color: #0c1324;
+        padding: 14px 22px;
+        font-weight: 800;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: 0.25s;
+    }
+
+    .viso-actions button:hover {
+        background: #0c1324;
+        color: white;
+    }
+
+    .viso-counter {
+        margin-top: 42px;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        color: #7a8190;
+    }
+
+    .viso-right {
+        position: relative;
+        overflow: hidden;
+        background:
+            linear-gradient(#e2e2dc 1px, transparent 1px),
+            linear-gradient(90deg, #e2e2dc 1px, transparent 1px);
+        background-size: 48px 48px;
+        display: grid;
+        place-items: center;
+        padding: 70px;
+    }
+
+    .viso-svg-wrap {
+        width: min(720px, 100%);
+        min-height: 460px;
+        display: grid;
+        place-items: center;
+        animation: fadeUp 0.5s ease;
+    }
+
+    .viso-svg-wrap svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .svg-box {
+        fill: #ffffff;
+        stroke: #0c1324;
+        stroke-width: 2;
+        rx: 4;
+    }
+
+    .svg-box-blue {
+        fill: #edf3ff;
+        stroke: #4361ee;
+    }
+
+    .svg-line {
+        stroke: #0c1324;
+        stroke-width: 2;
+        fill: none;
+    }
+
+    .svg-accent {
+        stroke: #4361ee;
+        stroke-width: 3;
+        fill: none;
+    }
+
+    .svg-text {
+        font-family: Inter, system-ui, sans-serif;
+        font-size: 17px;
+        font-weight: 800;
+        fill: #0c1324;
+    }
+
+    .svg-small {
+        font-size: 13px;
+        font-weight: 600;
+        fill: #536078;
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 900px) {
+        .viso-editorial-carousel {
+            grid-template-columns: 1fr;
+        }
+
+        .viso-left {
+            padding: 58px 24px;
+            border-right: 0;
+            border-bottom: 1px solid #d8d8d0;
+        }
+
+        .viso-right {
+            padding: 36px 18px;
+        }
+
+        .viso-left p {
+            font-size: 18px;
+        }
+    }
+</style>
+
+<script>
+    const modules = [
+        {
+            title: "Pacientes y recetas",
+            text: "Registra pacientes, medidas ópticas, historial y recetas en un flujo claro.",
+            svg: `
+<svg viewBox="0 0 720 460">
+    <rect x="40" y="80" width="180" height="100" class="svg-box-blue" />
+    <text x="70" y="125" class="svg-text">Paciente</text>
+    <text x="70" y="150" class="svg-small">Datos completos</text>
+
+    <path d="M220 130 H300" class="svg-line" />
+    <path d="M290 120 L305 130 L290 140" class="svg-line" />
+
+    <rect x="305" y="80" width="180" height="100" class="svg-box" />
+    <text x="335" y="125" class="svg-text">Receta</text>
+    <text x="335" y="150" class="svg-small">Esfera, cilindro, eje</text>
+
+    <path d="M485 130 H565" class="svg-line" />
+    <path d="M555 120 L570 130 L555 140" class="svg-line" />
+
+    <rect x="570" y="80" width="110" height="100" class="svg-box" />
+    <text x="595" y="125" class="svg-text">Venta</text>
+
+    <path d="M625 180 V290 H130 V180" class="svg-accent" />
+    <text x="205" y="340" class="svg-text">Todo queda guardado en el historial</text>
+    <text x="230" y="370" class="svg-small">para futuras atenciones y controles.</text>
+</svg>
+`
+        },
+        {
+            title: "Inventario óptico",
+            text: "Controla monturas, lunas, accesorios, stock, entradas, salidas y kardex.",
+            svg: `
+<svg viewBox="0 0 720 460">
+    <rect x="70" y="70" width="170" height="90" class="svg-box-blue" />
+    <text x="105" y="115" class="svg-text">Producto</text>
+    <text x="105" y="140" class="svg-small">Montura / luna</text>
+
+    <rect x="275" y="70" width="170" height="90" class="svg-box" />
+    <text x="320" y="115" class="svg-text">Stock</text>
+    <text x="305" y="140" class="svg-small">Cantidad actual</text>
+
+    <rect x="480" y="70" width="170" height="90" class="svg-box" />
+    <text x="535" y="115" class="svg-text">Venta</text>
+    <text x="515" y="140" class="svg-small">Salida automática</text>
+
+    <path d="M240 115 H275" class="svg-line" />
+    <path d="M445 115 H480" class="svg-line" />
+
+    <rect x="170" y="255" width="380" height="110" class="svg-box" />
+    <text x="290" y="305" class="svg-text">Kardex</text>
+    <text x="235" y="335" class="svg-small">Historial completo de movimientos</text>
+
+    <path d="M565 160 V220 H360 V255" class="svg-accent" />
+</svg>
+`
+        },
+        {
+            title: "Agenda y recordatorios",
+            text: "Programa citas y envía recordatorios por WhatsApp sin estar escribiendo lo mismo mil veces.",
+            svg: `
+<svg viewBox="0 0 720 460">
+    <rect x="80" y="80" width="190" height="250" class="svg-box-blue" />
+    <text x="125" y="125" class="svg-text">Agenda</text>
+    <line x1="110" y1="160" x2="240" y2="160" class="svg-line" />
+    <line x1="110" y1="205" x2="240" y2="205" class="svg-line" />
+    <line x1="110" y1="250" x2="240" y2="250" class="svg-line" />
+
+    <path d="M270 205 H390" class="svg-line" />
+    <path d="M380 195 L395 205 L380 215" class="svg-line" />
+
+    <rect x="395" y="125" width="240" height="160" class="svg-box" />
+    <text x="455" y="175" class="svg-text">WhatsApp</text>
+    <text x="440" y="205" class="svg-small">Recordatorio enviado</text>
+    <text x="455" y="230" class="svg-small">Confirmación rápida</text>
+
+    <circle cx="515" cy="335" r="38" fill="#edf3ff" stroke="#4361ee" stroke-width="3" />
+    <path d="M495 335 L510 350 L540 315" class="svg-accent" />
+</svg>
+`
+        },
+        {
+            title: "Ventas y reportes",
+            text: "Visualiza ventas, caja, productos más vendidos y resultados por día o sucursal.",
+            svg: `
+<svg viewBox="0 0 720 460">
+    <rect x="70" y="80" width="250" height="280" class="svg-box" />
+    <text x="115" y="130" class="svg-text">Caja diaria</text>
+    <text x="115" y="165" class="svg-small">Ventas</text>
+    <text x="115" y="195" class="svg-small">Métodos de pago</text>
+    <text x="115" y="225" class="svg-small">Totales</text>
+
+    <rect x="390" y="80" width="250" height="280" class="svg-box-blue" />
+    <text x="455" y="130" class="svg-text">Reportes</text>
+
+    <line x1="430" y1="310" x2="600" y2="310" class="svg-line" />
+    <rect x="440" y="230" width="25" height="80" fill="#4361ee" />
+    <rect x="485" y="190" width="25" height="120" fill="#4361ee" />
+    <rect x="530" y="255" width="25" height="55" fill="#4361ee" />
+    <rect x="575" y="165" width="25" height="145" fill="#4361ee" />
+
+    <path d="M320 220 H390" class="svg-line" />
+    <path d="M380 210 L395 220 L380 230" class="svg-line" />
+</svg>
+`
+        }
+    ];
+
+    let index = 0;
+
+    const title = document.getElementById("moduleTitle");
+    const text = document.getElementById("moduleText");
+    const svgContainer = document.getElementById("svgContainer");
+    const currentSlide = document.getElementById("currentSlide");
+    const totalSlides = document.getElementById("totalSlides");
+
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    totalSlides.textContent = String(modules.length).padStart(2, "0");
+
+    function renderSlide() {
+        title.textContent = modules[index].title;
+        text.textContent = modules[index].text;
+        svgContainer.innerHTML = modules[index].svg;
+        currentSlide.textContent = String(index + 1).padStart(2, "0");
+
+        svgContainer.style.animation = "none";
+        void svgContainer.offsetWidth;
+        svgContainer.style.animation = "fadeUp 0.5s ease";
+    }
+
+    nextBtn.addEventListener("click", () => {
+        index = (index + 1) % modules.length;
+        renderSlide();
+    });
+
+    prevBtn.addEventListener("click", () => {
+        index = (index - 1 + modules.length) % modules.length;
+        renderSlide();
+    });
+
+    renderSlide();
+
+</script>

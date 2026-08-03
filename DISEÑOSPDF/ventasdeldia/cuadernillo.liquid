@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>{{ report_date_short }}</title>
+
+<style>
+body{
+    margin:0;
+    background:#ffffff;
+    font-family:"Courier New", monospace;
+    color:#000;
+}
+
+.hoja{
+    width:1400px;
+    margin:20px auto;
+    background:#fff;
+    padding:20px 30px 60px 30px;
+}
+
+.fecha{
+    text-align:right;
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.tabla{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.tabla th{
+    font-weight:normal;
+    text-align:left;
+    padding:6px 10px;
+    border-bottom:2px solid #234fb3;
+}
+
+.tabla td{
+    padding:8px 10px;
+    height:28px;
+    vertical-align:top;
+}
+
+.col-codigo{ width:100px; border-right:2px solid #234fb3; }
+.col-nombre{ width:350px; border-right:2px solid #234fb3; }
+.col-detalle{ width:450px; border-right:2px solid #234fb3; }
+.col-precio{ width:150px; border-right:2px solid #234fb3; }
+.col-pago{ width:150px; border-right:2px solid #234fb3; }
+.col-debe{ width:150px; }
+
+.espacio{
+    height:170px;
+}
+
+.zona-abajo{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-top:30px;
+}
+
+.gastos{
+    width:430px;
+    font-size:20px;
+    line-height:1.8;
+}
+
+.gastos .titulo{
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.gastos table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.gastos td{
+    padding:2px 8px;
+}
+
+.gastos .monto{
+    text-align:right;
+    width:120px;
+}
+
+.totales{
+    width:350px;
+    font-size:22px;
+    line-height:2;
+}
+
+.totales div{
+    display:flex;
+    justify-content:space-between;
+}
+
+.valor{
+    min-width:140px;
+    text-align:right;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hoja">
+
+    <div class="fecha">{{ report_date_short }}</div>
+
+    <table class="tabla">
+
+        <tr>
+            <th class="col-codigo">Código</th>
+            <th class="col-nombre">Nombre</th>
+            <th class="col-detalle">Detalle</th>
+            <th class="col-precio">Precio</th>
+            <th class="col-pago">Pago</th>
+            <th class="col-debe">Debe</th>
+        </tr>
+
+        {% for sale in sales %}
+        <tr>
+            <td class="col-codigo">{{ sale.numero_orden }}</td>
+            <td class="col-nombre">{{ sale.cliente }}</td>
+            <td class="col-detalle">{{ sale.detalle }}</td>
+            <td class="col-precio">{{ sale.precio }}</td>
+            <td class="col-pago">{{ sale.pago }}</td>
+            <td class="col-debe">{{ sale.debe }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <div class="espacio"></div>
+
+    <div class="zona-abajo">
+
+        <div class="gastos">
+            <div class="titulo">Gastos</div>
+
+            <table>
+                {% for gasto in gastos %}
+                <tr>
+                    <td>{{ gasto.nombre }}</td>
+                    <td class="monto">{{ gasto.monto }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="totales">
+
+            <div>
+                <span>Total Venta:</span>
+                <span class="valor">{{ total_venta }}</span>
+            </div>
+
+            <div>
+                <span>Abonos:</span>
+                <span class="valor">{{ total_abonos }}</span>
+            </div>
+
+            <div>
+                <span>Gastos:</span>
+                <span class="valor">{{ total_gastos }}</span>
+            </div>
+
+            <div>
+                <span>Total:</span>
+                <span class="valor">{{ total_neto }}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

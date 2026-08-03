@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Círculo del paciente (cabeza) -->
+    <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+    <!-- Cuerpo del paciente (forma simplificada) -->
+    <path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <!-- Símbolo + -->
+    <circle cx="19" cy="19" r="4" fill="#191919"/>
+    <path d="M19 17v4M17 19h4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg>

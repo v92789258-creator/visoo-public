@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reporte Diario Óptica</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:white;
+  font-family:Arial, Helvetica, sans-serif;
+  color:#000;
+}
+
+.reporte{
+  width:794px;
+  min-height:1123px;
+  margin:auto;
+  padding:20px 24px;
+  font-size:10px;
+}
+
+.print-btn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:#0ea5e9;
+  color:white;
+  border:0;
+  border-radius:8px;
+  padding:10px 16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.header{
+  display:grid;
+  grid-template-columns:90px 1fr 230px;
+  gap:14px;
+  align-items:start;
+}
+
+.logo{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  background:#222;
+  color:white;
+  border:4px solid #e6b400;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:15px;
+  font-weight:bold;
+}
+
+.empresa{
+  text-align:center;
+}
+
+.empresa h1{
+  margin:0;
+  font-size:17px;
+}
+
+.empresa h2{
+  margin:2px 0 5px;
+  font-size:11px;
+}
+
+.empresa p{
+  margin:2px 0;
+  line-height:1.25;
+}
+
+.doc-box{
+  border:1.5px solid #000;
+  border-radius:8px;
+  text-align:center;
+  overflow:hidden;
+}
+
+.doc-box div{
+  border-bottom:1px solid #000;
+  padding:8px 5px;
+  font-weight:bold;
+}
+
+.doc-box div:last-child{
+  border-bottom:0;
+}
+
+.doc-title{
+  font-size:16px;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:18px;
+}
+
+.info-line{
+  display:grid;
+  grid-template-columns:125px 1fr;
+  margin-bottom:5px;
+}
+
+.resumen{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:6px;
+  margin-top:12px;
+}
+
+.card{
+  border:1px solid #000;
+  border-radius:6px;
+  padding:6px 4px;
+  text-align:center;
+  min-width:0;
+  font-size:11px;
+}
+
+.card b{
+  display:block;
+  font-size:13px;
+  margin-top:4px;
+}
+
+.section-title{
+  margin-top:16px;
+  margin-bottom:4px;
+  font-weight:bold;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  border:1px solid #000;
+  padding:4px;
+  vertical-align:top;
+}
+
+th{
+  background:#111;
+  color:white;
+  font-size:9px;
+  text-align:center;
+}
+
+.center{text-align:center}
+.right{text-align:right}
+.left{text-align:left}
+
+.estado{
+  font-weight:bold;
+  text-align:center;
+}
+
+.bottom{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:20px;
+  margin-top:15px;
+}
+
+.obs{
+  border:1px solid #2c8b35;
+  border-radius:5px;
+  min-height:70px;
+  padding:7px;
+  line-height:1.4;
+}
+
+.totals td{
+  border:0;
+  padding:4px;
+  font-size:11px;
+}
+
+.totals .label{
+  text-align:right;
+  font-weight:bold;
+}
+
+.totals .money{
+  text-align:right;
+  width:90px;
+}
+
+.footer{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:170px 1fr;
+  gap:20px;
+  align-items:end;
+}
+
+.qr{
+  width:110px;
+  height:110px;
+  background:repeating-linear-gradient(45deg,#000 0 5px,#fff 5px 10px);
+}
+
+.firma{
+  border:1.5px solid #000;
+  border-radius:8px;
+  height:90px;
+  padding-top:40px;
+}
+
+.firma-line{
+  border-top:1px dashed #555;
+  margin:0 8px;
+  padding-top:4px;
+  text-align:center;
+}
+
+.legal{
+  border-top:1px solid #000;
+  margin-top:20px;
+  padding-top:6px;
+  font-size:9px;
+  text-align:center;
+}
+
+@media print{
+  @page{
+    size:A4;
+    margin:0;
+  }
+
+  .print-btn{
+    display:none;
+  }
+
+  .reporte{
+    margin:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<button class="print-btn" onclick="window.print()">Descargar PDF</button>
+
+<div class="reporte">
+
+  <div class="header">
+    <div class="logo">TU<br>LOGO<br>AQUÍ</div>
+
+    <div class="empresa">
+      <h1>ÓPTICA VISIÓN CENTER</h1>
+      <h2>REPORTE DIARIO DE OPERACIONES</h2>
+      <p><b>Dirección:</b> Av. Los Geranios 330 - Lima</p>
+      <p><b>Sucursal:</b> Tienda Principal</p>
+      <p><b>Teléfono:</b> 999 888 777 | ventas@optica.com</p>
+    </div>
+
+    <div class="doc-box">
+      <div>R.U.C. 20200200200</div>
+      <div class="doc-title">REPORTE DIARIO</div>
+      <div>CONTRATOS Y VENTAS</div>
+      <div>RD01-00000025</div>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div>
+      <div class="info-line"><b>FECHA:</b><span>02/06/2026</span></div>
+      <div class="info-line"><b>CAJERO:</b><span>Alex Administrador</span></div>
+      <div class="info-line"><b>SUCURSAL:</b><span>Tienda Principal</span></div>
+    </div>
+
+    <div>
+      <div class="info-line"><b>HORA:</b><span>08:45 PM</span></div>
+      <div class="info-line"><b>PERIODO:</b><span>00:00 - 23:59</span></div>
+      <div class="info-line"><b>MONEDA:</b><span>SOLES</span></div>
+    </div>
+  </div>
+
+  <div class="resumen">
+    <div class="card">Contratos ópticos<b>4</b></div>
+    <div class="card">Ventas sueltas<b>5</b></div>
+    <div class="card">Cobrado hoy<b>S/ 2,180.00</b></div>
+    <div class="card">Debe total<b>S/ 870.00</b></div>
+    <div class="card">Comisiones<b>S/ 105.75</b></div>
+  </div>
+
+  <div class="section-title">Contratos ópticos del día</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:30px">N°</th>
+        <th style="width:90px">CONTRATO</th>
+        <th>CLIENTE</th>
+        <th style="width:80px">MEDIDA</th>
+        <th style="width:75px">VENDEDOR</th>
+        <th style="width:65px">TOTAL</th>
+        <th style="width:65px">A CUENTA</th>
+        <th style="width:65px">DEBE</th>
+        <th style="width:75px">ESTADO</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="center">1</td>
+        <td class="center">C001-000124</td>
+        <td>María López</td>
+        <td class="center">Con medida</td>
+        <td class="center">Rosa</td>
+        <td class="right">350.00</td>
+        <td class="right">150.00</td>
+        <td class="right">200.00</td>
+        <td class="estado">Pendiente</td>
+      </tr>
+
+      <tr>
+        <td class="center">2</td>
+        <td class="center">C001-000125</td>
+        <td>Juan Pérez</td>
+        <td class="center">Con medida</td>
+        <td class="center">Alex</td>
+        <td class="right">420.00</td>
+        <td class="right">420.00</td>
+        <td class="right">0.00</td>
+        <td class="estado">Pagado</td>
+      </tr>
+
+      <tr>
+        <td class="center">3</td>
+        <td class="center">C001-000126</td>
+        <td>Lucía Torres</td>
+        <td class="center">Con medida</td>
+        <td class="center">Rosa</td>
+        <td class="right">580.00</td>
+        <td class="right">300.00</td>
+        <td class="right">280.00</td>
+        <td class="estado">Laboratorio</td>
+      </tr>
+
+      <tr>
+        <td class="center">4</td>
+        <td class="center">C001-000127</td>
+        <td>Carlos Díaz</td>
+        <td class="center">Con medida</td>
+        <td class="center">Alex</td>
+        <td class="right">390.00</td>
+        <td class="right">0.00</td>
+        <td class="right">390.00</td>
+        <td class="estado">Debe</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Ventas sueltas del día</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:30px">N°</th>
+        <th style="width:90px">VENTA</th>
+        <th>PRODUCTO / DETALLE</th>
+        <th style="width:80px">CLIENTE</th>
+        <th style="width:75px">VENDEDOR</th>
+        <th style="width:75px">PAGO</th>
+        <th style="width:70px">TOTAL</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="center">1</td>
+        <td class="center">V001-000301</td>
+        <td>Montura solar UV400 modelo aviador</td>
+        <td class="center">Cliente varios</td>
+        <td class="center">Alex</td>
+        <td class="center">Efectivo</td>
+        <td class="right">120.00</td>
+      </tr>
+
+      <tr>
+        <td class="center">2</td>
+        <td class="center">V001-000302</td>
+        <td>Spray limpiador de lentes 60ML x 2</td>
+        <td class="center">Cliente varios</td>
+        <td class="center">Rosa</td>
+        <td class="center">Yape</td>
+        <td class="right">30.00</td>
+      </tr>
+
+      <tr>
+        <td class="center">3</td>
+        <td class="center">V001-000303</td>
+        <td>Estuche rígido para lentes + paño microfibra</td>
+        <td class="center">Ana Gómez</td>
+        <td class="center">Alex</td>
+        <td class="center">Tarjeta</td>
+        <td class="right">45.00</td>
+      </tr>
+
+      <tr>
+        <td class="center">4</td>
+        <td class="center">V001-000304</td>
+        <td>Montura oftálmica acetato negro</td>
+        <td class="center">Luis Ramos</td>
+        <td class="center">Rosa</td>
+        <td class="center">Efectivo</td>
+        <td class="right">180.00</td>
+      </tr>
+
+      <tr>
+        <td class="center">5</td>
+        <td class="center">V001-000305</td>
+        <td>Cordón sujetador para lentes sport</td>
+        <td class="center">Cliente varios</td>
+        <td class="center">Alex</td>
+        <td class="center">Yape</td>
+        <td class="right">20.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Comisiones por vendedor</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>VENDEDOR</th>
+        <th style="width:110px">CONTRATOS</th>
+        <th style="width:110px">VENTAS SUELTAS</th>
+        <th style="width:110px">TOTAL VENDIDO</th>
+        <th style="width:110px">COMISIÓN</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Alex</td>
+        <td class="center">2</td>
+        <td class="center">3</td>
+        <td class="right">995.00</td>
+        <td class="right">49.75</td>
+      </tr>
+
+      <tr>
+        <td>Rosa</td>
+        <td class="center">2</td>
+        <td class="center">2</td>
+        <td class="right">1,120.00</td>
+        <td class="right">56.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Detalle de Laboratorio y Lunas (Contratos)</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:120px">N° CONTRATO</th>
+        <th>LABORATORIO</th>
+        <th>TIPO DE LUNA</th>
+        <th style="width:120px">PRECIO</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="center">C001-000124</td>
+        <td class="center">Lab Ejemplo</td>
+        <td class="center">Resina Anti-Reflex</td>
+        <td class="right">350.00</td>
+      </tr>
+      <tr>
+        <td class="center">C001-000125</td>
+        <td class="center">Lab Ejemplo 2</td>
+        <td class="center">Policarbonato</td>
+        <td class="right">420.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="bottom">
+    
+    <div class="obs">
+      <b>Observaciones:</b><br>
+      Este reporte separa contratos ópticos de ventas sueltas.  
+      Los contratos pueden tener total, a cuenta, saldo pendiente y estado de laboratorio.
+      Las ventas sueltas tienen código propio de venta y no requieren graduación.
+    </div>
+
+    <div>
+      <table class="totals">
+        <tr><td class="label">TOTAL CONTRATOS</td><td class="money">S/ 1,740.00</td></tr>
+        <tr><td class="label">TOTAL VENTAS SUELTAS</td><td class="money">S/ 395.00</td></tr>
+        <tr><td class="label">A CUENTA COBRADO</td><td class="money">S/ 870.00</td></tr>
+        <tr><td class="label">DEBE CONTRATOS</td><td class="money">S/ 870.00</td></tr>
+        <tr><td class="label">COBRADO HOY</td><td class="money"><b>S/ 2,180.00</b></td></tr>
+        <tr><td class="label">COMISIONES</td><td class="money">S/ 105.75</td></tr>
+        <tr><td class="label">TOTAL CAJA</td><td class="money">S/ {{TOTAL_CAJA}}</td></tr>
+        <tr><td class="label">SUMA TOTAL</td><td class="money"><b>S/ {{SUMA_TOTAL}}</b></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>
+      <div class="qr"></div>
+      <div style="font-size:9px;margin-top:6px;">
+        Representación impresa del <b>REPORTE DIARIO DE OPERACIONES</b><br>
+        Generado por sistema VISO
+      </div>
+    </div>
+
+    <div class="firma">
+      <div class="firma-line">
+        Firma / cierre de caja del responsable
+      </div>
+    </div>
+  </div>
+
+  <div class="legal">
+    Documento interno de control administrativo. No reemplaza boleta, factura ni comprobante electrónico SUNAT.
+  </div>
+
+</div>
+
+</body>
+</html>

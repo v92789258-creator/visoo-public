@@ -1,0 +1,285 @@
+═══════════════════════════════════════════════════════════════════════════════
+  COMPARATIVA: DISEÑO FEOS VS DISEÑO PROFESIONAL
+═══════════════════════════════════════════════════════════════════════════════
+
+
+📊 PALETA DE COLORES
+═════════════════════════════════════════════════════════════════════════════════
+
+❌ ANTES (Desorden de colores):
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ #0078D4 (Azul brillante) - Botón Nueva Cita                                 │
+│ #0066CC (Azul otro tono) - Hover botón                                      │
+│ #4CAF50 (Verde) - Botón Estadísticas                                        │
+│ #FF9800 (Naranja) - Estado pendiente                                        │
+│ #28A745 (Verde otro) - Estado completada                                    │
+│ #E53935 (Rojo claro) - Estado cancelada                                     │
+│ #F44336 (Rojo otro) - Error                                                 │
+│ + Gradientes en casi todo                                                    │
+│ + Colores que no combinan                                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+✅ DESPUÉS (Corporativo y limpio):
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ PRIMARIOS:                                                                   │
+│   #0d47a1  - Azul oscuro (todas las acciones principales)                   │
+│   #1565c0  - Azul corporativo (enlaces, hover)                              │
+│   #42a5f5  - Azul claro (estados hover)                                     │
+│                                                                              │
+│ SECUNDARIOS (estados):                                                      │
+│   #1b5e20  - Verde oscuro (éxito/completar)                                 │
+│   #f57f17  - Naranja (advertencias/pendiente)                               │
+│   #d9534f  - Rojo oscuro (peligro/cancelar)                                 │
+│                                                                              │
+│ NEUTROS (todo el fondo):                                                   │
+│   #ffffff  - Blanco puro (fondo tarjetas)                                   │
+│   #f8f9fa  - Gris ultra claro (fondo panel)                                 │
+│   #dee2e6  - Gris borde (bordes)                                            │
+│   #495057  - Gris oscuro (texto secundario)                                 │
+│   #1a1a1a  - Negro (texto principal)                                       │
+│                                                                              │
+│ ✓ Coherente y profesional                                                   │
+│ ✓ Solo 10-12 colores en total                                               │
+│ ✓ Fácil de mantener                                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+🎨 COMPONENTES VISUALES
+═════════════════════════════════════════════════════════════════════════════════
+
+CALENDARIO:
+─────────────
+
+❌ ANTES:
+    QCalendarWidget QToolButton {
+        background: transparent → Confuso sin hover
+        color: #2C2C2C
+        border: none
+        border-radius: 4px  ← Redondeado sin sentido
+        padding: 6px
+        font-size: 13px
+        min-width: 80px  ← Muy ancho
+    }
+    QCalendarWidget QToolButton:hover {
+        background-color: #E5F3FF  ← Azul pálido
+        color: #0078D4  ← Otro azul diferente
+    }
+    Resultado: Confuso y con muchos tonos azules
+
+✅ DESPUÉS:
+    QCalendarWidget QToolButton {
+        color: #495057  ← Gris corporativo
+        background-color: transparent
+        border: none
+        border-radius: 4px
+        padding: 6px 4px
+        margin: 2px
+        font-weight: 500  ← Más legible
+        font-size: 11px
+    }
+    QCalendarWidget QToolButton:hover {
+        background-color: #e7f1ff  ← Azul claro
+        color: #0d47a1  ← Azul corporativo
+    }
+    Resultado: Limpio, coherente, profesional
+
+
+TARJETAS DE CITA:
+─────────────────
+
+❌ ANTES:
+    QFrame {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+                                   stop:0 #FFE8E8, stop:1 #FFDDDD);  ← Gradiente feo
+        border: 2px solid #E53935;  ← Muy ancho (2px)
+        border-radius: 10px;  ← Muy redondeado
+        padding: 0px;
+    }
+    QFrame:hover {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+                                   stop:0 #FFD6D6, stop:1 #FFCCCC);  ← Anima gradiente
+    }
+    Resultado: Poco profesional, animaciones molestas
+
+✅ DESPUÉS:
+    QFrame.appointment_card {
+        background-color: #ffffff;  ← Limpio
+        border: 1px solid #dee2e6;  ← Subtle (1px)
+        border-radius: 6px;  ← Redondeado moderado
+        padding: 14px;
+    }
+    QFrame.appointment_card:hover {
+        border: 1px solid #0d47a1;  ← Cambio sutilmente
+        background-color: #f8fbff;  ← Color sutil
+        border-radius: 6px;
+    }
+    Resultado: Moderno, profesional, sin animaciones
+
+
+BOTONES:
+────────
+
+❌ ANTES:
+    QPushButton {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                  stop:0 #0078D4, stop:1 #0066CC);  ← Gradiente
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 11px 16px;  ← Padding inconsistente
+        font-weight: bold;  ← Demasiado bold
+        font-size: 12px;
+    }
+    Resultado: Con gradiente innecesario
+
+✅ DESPUÉS:
+    QPushButton#btn_new_appointment {
+        background-color: #0d47a1;  ← Color plano y limpio
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 14px;  ← Padding consistente
+        font-weight: 600;  ← Font-weight moderado
+        font-size: 12px;
+    }
+    QPushButton#btn_new_appointment:hover {
+        background-color: #0a3d91;  ← Cambio de tono sutil
+    }
+    Resultado: Plano, limpio, moderno, profesional
+
+
+INPUTS:
+───────
+
+❌ ANTES:
+    QLineEdit {
+        padding: 8px;
+        border: 1px solid #ddd;  ← Gris genérico
+        border-radius: 5px;
+        background: white;
+        font-size: 11px;
+    }
+    Resultado: Básico y sin feedback visual claro
+
+✅ DESPUÉS:
+    QLineEdit {
+        background-color: #ffffff;
+        color: #495057;
+        border: 1px solid #dee2e6;  ← Gris corporativo
+        border-radius: 4px;
+        padding: 8px;
+        font-size: 11px;
+        selection-background-color: #0d47a1;
+        selection-color: #ffffff;
+    }
+    QLineEdit:focus {
+        border: 2px solid #0d47a1;  ← Cambio claro al enfocar
+        background-color: #f8fbff;
+    }
+    Resultado: Feedback visual claro, profesional
+
+
+MENSAJES DE ESTADO:
+───────────────────
+
+❌ ANTES:
+    ✓ COMPLETADA      - Color: #28A745 (verde brillante)
+    ● Pendiente       - Color: #FF9800 (naranja brillante)
+    ⚠️ VENCIDA        - Color: #E53935 (rojo claro)
+    Problema: Colores que no combinan, estridente
+
+✅ DESPUÉS:
+    ✓ COMPLETADA      - Color: #1b5e20 (verde oscuro corporativo)
+    ● Pendiente       - Color: #f57f17 (naranja corporativo)
+    ⚠️ VENCIDA        - Color: #d9534f (rojo oscuro corporativo)
+    Ventaja: Colores coherentes y profesionales
+
+
+📏 ESPACIADO Y TIPOGRAFÍA
+═════════════════════════════════════════════════════════════════════════════════
+
+❌ ANTES:
+    - Padding/Margin inconsistente (5px, 11px, 15px, 25px sin lógica)
+    - Font-weight mezclado (bold, 600, 500 sin criterio)
+    - Font-size variables (11px, 12px, 13px, 14px, 18px sin jerarquía)
+    - Familias de fuentes implícitas (depende del SO)
+
+✅ DESPUÉS:
+    Espaciado consistente:
+    - Padding pequeño: 6px (inputs, badges)
+    - Padding medio: 8-10px (botones pequeños)
+    - Padding grande: 12-14px (tarjetas, paneles)
+    - Margin: 0px-15px (proporcional)
+
+    Tipografía jerárquica:
+    - Títulos principales: 16px, weight 600
+    - Títulos secundarios: 13px, weight 600
+    - Texto normal: 12px, weight 500
+    - Texto pequeño: 11px, weight 400
+    - Texto muy pequeño: 10px, weight 400
+
+    Familia: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif
+    (Una sola familia para toda la app)
+
+
+🎯 ANTES vs DESPUÉS - RESULTADO FINAL
+═════════════════════════════════════════════════════════════════════════════════
+
+❌ ANTES (Página de citas actual):
+   ┌───────────────────────────────────────────────────────┐
+   │ 🌈 Colores por todos lados (azul, verde, naranja)    │
+   │ 🎨 Gradientes en botones y tarjetas                   │
+   │ ⚡ Animaciones lentas (hover con gradiente)           │
+   │ 😕 Emojis excesivos (🕐📋👤)                          │
+   │ 🤪 Bordes redondeados inconsistentes (6px-10px)      │
+   │ 📊 Sin estructura visual clara                        │
+   │ 🎪 Se ve como diseño "playero" no corporativo         │
+   └───────────────────────────────────────────────────────┘
+
+✅ DESPUÉS (Nueva página de citas mejorada):
+   ┌───────────────────────────────────────────────────────┐
+   │ 🏢 Paleta corporativa azul-gris-blanco               │
+   │ 📐 Diseño plano y moderno (sin gradientes)           │
+   │ ⚡ Transiciones rápidas y suaves                      │
+   │ ✅ Emojis solo donde necesario (informativos)         │
+   │ 📏 Bordes redondeados consistentes (6px)             │
+   │ 🎯 Estructura visual clara y jerárquica              │
+   │ 💼 Se ve profesional y corporativo                    │
+   └───────────────────────────────────────────────────────┘
+
+
+✨ BENEFICIOS DEL NUEVO DISEÑO
+═════════════════════════════════════════════════════════════════════════════════
+
+✓ Más profesional y corporativo
+✓ Menos cansado a la vista
+✓ Mejor legibilidad
+✓ Interfaz más clara
+✓ Consistencia visual
+✓ Mantenimiento más fácil
+✓ Fácil de personalizar
+✓ Mejor UX (experiencia de usuario)
+✓ Accesibilidad mejorada
+✓ Reducción de "ruido visual"
+
+
+🚀 CÓMO APLICARLO
+═════════════════════════════════════════════════════════════════════════════════
+
+1. Copiar gui/styles/appointments_professional_style.py
+
+2. En appointments_page.py:
+   from gui.styles.appointments_professional_style import APPOINTMENTS_PAGE_STYLE
+   
+   class AppointmentsPage(QWidget):
+       def __init__(self, parent=None):
+           super().__init__(parent)
+           self.setStyleSheet(APPOINTMENTS_PAGE_STYLE)
+           ...
+
+3. Actualizar Object Names de componentes
+
+4. ¡Listo! El nuevo diseño se aplica automáticamente
+
+
+═══════════════════════════════════════════════════════════════════════════════

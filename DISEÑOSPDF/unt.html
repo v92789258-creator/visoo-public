@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Contrato Óptico</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#e5e5e5;
+  font-family:Arial, Helvetica, sans-serif;
+  color:#233b8f;
+}
+
+.print-btn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:#233b8f;
+  color:white;
+  border:0;
+  border-radius:6px;
+  padding:10px 16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.contrato{
+  width:794px;
+  min-height:1123px;
+  margin:20px auto;
+  background:#eef5f1;
+  padding:28px;
+  font-size:14px;
+}
+
+.marco{
+  border:3px solid #304da5;
+  padding:18px;
+  min-height:760px;
+}
+
+.header{
+  display:grid;
+  grid-template-columns:1fr 260px;
+  gap:20px;
+  align-items:start;
+}
+
+.empresa{
+  text-align:center;
+  line-height:1.25;
+}
+
+.empresa h1{
+  font-size:24px;
+  margin:0;
+  color:#233b8f;
+}
+
+.empresa h2{
+  font-size:17px;
+  margin:4px 0;
+  letter-spacing:1px;
+}
+
+.empresa p{
+  margin:2px 0;
+  font-size:12px;
+}
+
+.box-contrato{
+  border:2px solid #304da5;
+  text-align:center;
+  margin-top:55px;
+}
+
+.box-contrato .title{
+  font-size:26px;
+  font-weight:bold;
+  border-bottom:2px solid #304da5;
+  padding:6px;
+}
+
+.box-contrato .num{
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  padding:12px;
+  font-size:22px;
+}
+
+.box-contrato .red{
+  color:#b83232;
+  font-weight:bold;
+}
+
+.form{
+  margin-top:45px;
+}
+
+.line{
+  display:grid;
+  grid-template-columns:95px 1fr 70px 180px;
+  align-items:end;
+  margin-bottom:13px;
+  gap:8px;
+}
+
+.line.full{
+  grid-template-columns:95px 1fr;
+}
+
+.label{
+  font-weight:bold;
+}
+
+.input-line{
+  border-bottom:2px dotted #5267b5;
+  min-height:24px;
+  color:#444;
+  padding-left:6px;
+}
+
+.montura{
+  display:grid;
+  grid-template-columns:95px 1fr;
+  margin-bottom:14px;
+  align-items:end;
+}
+
+.medidas{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  margin-top:6px;
+}
+
+.eye-labels{
+  display:grid;
+  grid-template-rows:38px 38px 38px 38px;
+  align-items:center;
+  font-weight:bold;
+  font-size:18px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  color:#233b8f;
+}
+
+.medidas-table th,
+.medidas-table td{
+  border:2px solid #304da5;
+  height:38px;
+  text-align:center;
+  font-size:18px;
+}
+
+.medidas-table th{
+  height:28px;
+  font-size:16px;
+}
+
+.detalles{
+  margin-top:25px;
+}
+
+.detalle-line{
+  display:grid;
+  grid-template-columns:130px 1fr 90px 1fr 70px 1fr;
+  align-items:end;
+  margin-bottom:18px;
+  gap:6px;
+}
+
+.detalle-line.two{
+  grid-template-columns:160px 1fr 90px 1fr;
+}
+
+.detalle-line.full{
+  grid-template-columns:95px 1fr;
+}
+
+.entrega{
+  display:grid;
+  grid-template-columns:90px 170px 100px 1fr;
+  gap:8px;
+  align-items:end;
+  margin-top:20px;
+}
+
+.totales{
+  display:grid;
+  grid-template-columns:80px 1fr 70px 1fr 70px 1fr;
+  gap:8px;
+  align-items:end;
+  margin-top:45px;
+  font-size:18px;
+}
+
+.total-value{
+  border-bottom:2px solid #304da5;
+  min-height:28px;
+  color:#444;
+  padding-left:8px;
+}
+
+.footer-note{
+  margin-top:35px;
+  border-top:1px solid #304da5;
+  padding-top:8px;
+  text-align:center;
+  font-size:11px;
+}
+
+@media print{
+  @page{
+    size:A4;
+    margin:0;
+  }
+
+  body{background:white}
+  .print-btn{display:none}
+  .contrato{margin:0}
+}
+</style>
+</head>
+
+<body>
+
+<button class="print-btn" onclick="window.print()">Descargar PDF</button>
+
+<div class="contrato">
+  <div class="marco">
+
+    <div class="header">
+      <div class="empresa">
+        <h1>Bertha Llamocca Aguayo</h1>
+        <p>Venta de Monturas, Gafas de sol, Lentes de Contacto</p>
+        <p>Policarbonato en las Mejores Marcas y Repuestos en General</p>
+        <h2>LENTES INTELIGENTES - IA</h2>
+        <p>Av. Bolivia N° 982 Int. 118 Galería Guimo - Lima</p>
+        <p>TIENDA PRINCIPAL 140</p>
+        <p>990 314 376 / 952 409 026 / 932 386 703</p>
+      </div>
+
+      <div class="box-contrato">
+        <div class="title">CONTRATO</div>
+        <div class="num">
+          <span>0001</span>
+          <span class="red">N° 005388</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form">
+
+      <div class="line">
+        <div class="label">FECHA:</div>
+        <div class="input-line">15 / 04 / 2026</div>
+        <div class="label">Telf:</div>
+        <div class="input-line">999 358 437</div>
+      </div>
+
+      <div class="line full">
+        <div class="label">Señor(es):</div>
+        <div class="input-line">Elizabeth Collihua</div>
+      </div>
+
+      <div class="line">
+        <div class="label">Dirección:</div>
+        <div class="input-line"></div>
+        <div class="label">Telf:</div>
+        <div class="input-line"></div>
+      </div>
+
+      <div class="montura">
+        <div class="label">Montura:</div>
+        <div class="input-line">81621 C2</div>
+      </div>
+
+      <div class="medidas">
+        <div class="eye-labels">
+          <div>O.D.</div>
+          <div>O.I.</div>
+          <div>O.D.</div>
+          <div>O.I.</div>
+        </div>
+
+        <table class="medidas-table">
+          <thead>
+            <tr>
+              <th>ESF.</th>
+              <th>CIL.</th>
+              <th>EJE</th>
+              <th>D.I.P.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>+1.25</td>
+              <td>-0.75</td>
+              <td>65</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>+1.25</td>
+              <td>-0.75</td>
+              <td>73</td>
+              <td>62</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr> 
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="detalles">
+        <div class="detalle-line">
+          <div class="label">CRISTALES:</div>
+          <div class="input-line"></div>
+          <div class="label">RESINA:</div>
+          <div class="input-line"></div>
+          <div class="label">COLOR:</div>
+          <div class="input-line">Natural</div>
+        </div>
+
+        <div class="detalle-line two">
+          <div class="label">BIFOCALES TIPO:</div>
+          <div class="input-line"></div>
+          <div class="label">ALTURA:</div>
+          <div class="input-line"></div>
+        </div>
+
+        <div class="detalle-line full">
+          <div class="label">MULTIFOCAL TIPO:</div>
+          <div class="input-line">Flat top foto blue</div>
+        </div>
+
+        <div class="detalle-line full">
+          <div class="label">OTROS:</div>
+          <div class="input-line"></div>
+        </div>
+      </div>
+
+      <div class="entrega">
+        <div class="label">ENTREGA</div>
+        <div class="input-line">__/__/____</div>
+        <div class="label">VENDEDOR:</div>
+        <div class="input-line">Alex</div>
+      </div>
+
+      <div class="totales">
+        <div class="label">TOTAL:</div>
+        <div class="total-value">420</div>
+        <div class="label">A CTA:</div>
+        <div class="total-value">350</div>
+        <div class="label">SALDO:</div>
+        <div class="total-value">70</div>
+      </div>
+
+    </div>
+
+    <div class="footer-note">
+      Documento interno de contrato óptico. Generado por sistema VISO.
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

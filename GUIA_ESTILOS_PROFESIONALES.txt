@@ -1,0 +1,209 @@
+GUÍA DE APLICACIÓN DE ESTILOS PROFESIONALES
+==============================================
+
+ARCHIVO CREADO:
+✅ gui/styles/appointments_professional_style.py
+
+CÓMO USAR:
+===========
+
+1. En appointments_page.py, añadir al inicio:
+
+    from gui.styles.appointments_professional_style import (
+        APPOINTMENTS_PAGE_STYLE,
+        COLORS
+    )
+
+2. En la clase AppointmentsPage.__init__(), reemplazar todo el setStyleSheet() con:
+
+    self.setStyleSheet(APPOINTMENTS_PAGE_STYLE)
+
+3. Actualizar los nombres de elementos para usar Object Names:
+
+    left_panel.setObjectName("left_panel")
+    calendar_title.setObjectName("calendar_title")
+    add_appointment_btn.setObjectName("btn_new_appointment")
+    etc...
+
+CAMBIOS PRINCIPALES EN EL DISEÑO:
+==================================
+
+❌ ANTES (Feo):
+- Colores muy brillantes (#0078D4, #4CAF50, #FF9800)
+- Gradientes coloridos
+- Emojis excesivos
+- Animaciones lentas
+- Bordes redondeados excesivos
+- Fuentes inconsistentes
+
+✅ AHORA (Profesional):
+- Paleta corporativa: Azul oscuro (#0d47a1), grises, blancos
+- Diseño minimalista y limpio
+- Emojis solo donde necesario (no decorativos)
+- Sin animaciones innecesarias
+- Bordes redondeados sutiles (6px)
+- Tipografía profesional (Segoe UI, Helvetica Neue)
+
+COLORES NUEVOS:
+================
+
+Primarios:
+  🔵 #0d47a1  - Azul oscuro (principal)
+  🔵 #1565c0  - Azul corporativo
+  🔵 #42a5f5  - Azul claro
+
+Estados:
+  ✅ #1b5e20  - Verde oscuro (success)
+  ⚠️  #f57f17  - Naranja (warning)
+  ❌ #d9534f  - Rojo (danger)
+
+Neutros:
+  ⬜ #ffffff  - Blanco (fondo)
+  ⬜ #f8f9fa  - Gris muy claro (fondo panel)
+  ⬜ #dee2e6  - Gris borde
+  ⬜ #6c757d  - Gris texto
+  ⬜ #1a1a1a  - Negro (texto principal)
+
+ELEMENTO DE EJEMPLO - ANTES Y DESPUÉS:
+
+❌ ANTES:
+    add_appointment_btn.setStyleSheet("""
+        QPushButton {
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #0078D4, stop:1 #0066CC);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 11px 16px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        QPushButton:hover {
+            background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #0066CC, stop:1 #0052A3);
+        }
+    """)
+
+✅ AHORA:
+    add_appointment_btn.setObjectName("btn_new_appointment")
+    # El estilo se aplica automáticamente desde APPOINTMENTS_PAGE_STYLE
+
+
+ESTRUCTURA DE APLICACIÓN:
+===========================
+
+1. Aplicar setStyleSheet() global a toda la página:
+   
+   self.setStyleSheet(APPOINTMENTS_PAGE_STYLE)
+
+2. Asignar Object Names a cada elemento:
+   
+   elemento.setObjectName("nombre_identificador")
+
+3. Los estilos se aplican automáticamente según el Object Name
+
+4. Para elementos dinámicos, usar setStyleSheet() individual:
+   
+   btn_edit.setObjectName("btn_edit_appointment")
+
+
+REFERENCIAS DE OBJECT NAMES:
+=============================
+
+Paneles:
+  - "left_panel"              (Panel izquierdo con calendario)
+  - "appointment_details"     (Panel derecho con detalles)
+
+Títulos:
+  - "calendar_title"          (Título del calendario)
+  - "calendar_subtitle"       (Subtítulo)
+  - "appointment_title"       (Título de detalles)
+
+Botones principales:
+  - "btn_new_appointment"     (Botón Nueva Cita)
+  - "btn_statistics"          (Botón Estadísticas)
+
+Botones de acción (en tarjetas):
+  - "btn_edit_appointment"    (Editar)
+  - "btn_complete_appointment" (Completar)
+  - "btn_cancel_appointment"  (Cancelar)
+
+Tarjetas:
+  - "appointment_card"        (Tarjeta normal)
+  - "appointment_card_past"   (Tarjeta fecha pasada)
+
+Elementos de tarjeta:
+  - "appointment_time"        (Hora de la cita)
+  - "appointment_patient_name" (Nombre del paciente)
+  - "appointment_type"        (Tipo de cita)
+
+Estados:
+  - "appointment_status_completed"  (Completada - verde)
+  - "appointment_status_pending"    (Pendiente - naranja)
+  - "appointment_status_past"       (Vencida - rojo)
+
+Otros:
+  - "separator"               (Líneas divisoras)
+  - "no_appointments_message" (Mensaje sin citas)
+
+
+CARACTERÍSTICAS DEL NUEVO DISEÑO:
+===================================
+
+✓ Limpio y minimalista
+✓ Colores profesionales y corporativos
+✓ Sin gradientes innecesarios
+✓ Sin animaciones lentas
+✓ Bordes sutiles (1px y 2px)
+✓ Espacios consistentes
+✓ Tipografía legible
+✓ Estados visuales claros
+✓ Accesibilidad mejorada
+✓ Responsive y moderno
+
+
+PASOS PARA IMPLEMENTAR:
+========================
+
+1. Copiar el archivo appointments_professional_style.py
+
+2. En appointments_page.py, línea 1:
+   from gui.styles.appointments_professional_style import APPOINTMENTS_PAGE_STYLE
+
+3. En AppointmentsPage.__init__(), después de super().__init__(parent):
+   self.setStyleSheet(APPOINTMENTS_PAGE_STYLE)
+
+4. Reemplazar todos los setStyleSheet() individuales con Object Names
+
+5. Actualizar los setStyleSheet() de diálogos (appointment_dialog.py):
+   - Usar los mismos colores
+   - Mantener consistencia visual
+
+6. Probar que todo funcione correctamente
+
+7. ¡Disfruta del nuevo diseño profesional! 🎉
+
+
+PERSONALIZACIÓN ADICIONAL:
+============================
+
+Para cambiar colores globalmente, editar COLORS en el archivo:
+
+    COLORS = {
+        "primary_dark": "#0d47a1",  # Cambiar aquí
+        "success": "#1b5e20",       # O aquí
+        ...
+    }
+
+Los cambios se aplicarán a toda la aplicación automáticamente.
+
+
+SOPORTE Y MANTENIMIENTO:
+=========================
+
+✓ Archivo único y centralizado
+✓ Fácil de modificar
+✓ Reutilizable en otras páginas
+✓ Sin código duplicado
+✓ Consistencia visual garantizada
+✓ Mantenimiento simple

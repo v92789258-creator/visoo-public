@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>__MODULE_LABEL__ - VISO</title>
+                        <link rel="stylesheet" href="/lan-assets/view.css">
+        </head> 
+        <body>
+            <header>
+                <div class="left">
+                    <a href="/" class="back-btn">← Volver</a>
+                    <div class="title">__MODULE_ICON__ __MODULE_LABEL__</div>
+                </div>
+                __CREATE_BUTTON__
+            </header>
+            
+            <main>
+                <div class="controls">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar en __MODULE_LABEL__...">
+                    <input type="text" id="barcodeInput" class="barcode-box" placeholder="Codigo de barras...">
+                    <div id="counterLabel" class="counter-label" style="font-size: 0.9rem; color: #666; align-self: center; font-weight: 600;"></div>
+                </div>
+                <div class="filter-panel" id="inventoryFilters" style="display: none; padding: 15px; background: #f9f9f9; border-radius: 8px; margin-bottom: 15px; border: 1px solid #eee;">
+                    <div style="font-weight: bold; margin-bottom: 10px; font-size: 0.85rem; color: #555;">FILTRAR POR:</div>
+                    <div class="filter-row" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <select id="filterCategory" class="filter-select" style="padding: 8px; border-radius: 6px; border: 1px solid #ccc; flex: 1; min-width: 150px;">
+                            <option value="">Todas las Categorías</option>
+                            __CATEGORY_OPTIONS__
+                        </select>
+                        <select id="filterBrand" class="filter-select" style="padding: 8px; border-radius: 6px; border: 1px solid #ccc; flex: 1; min-width: 150px;">
+                            <option value="">Todas las Marcas</option>
+                            __BRAND_OPTIONS__
+                        </select>
+                        <button type="button" id="applyFiltersBtn" class="btn-save" style="padding: 8px 20px; background: #1976D2; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">Aplicar</button>
+                        <button type="button" id="clearFiltersBtn" class="btn-cancel" style="padding: 8px 20px; background: #eee; color: #333; border: none; border-radius: 6px; cursor: pointer;">Limpiar</button>
+                    </div>
+                </div>
+                
+                <!-- VISTA TABLA -->
+                <div id="tableContainer" class="table-container">
+                    <table id="dataTable">
+                        <thead><tr id="tableHeaders"></tr></thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+                
+                <!-- VISTA GRID (Inventario) -->
+                <div id="gridContainer" class="product-grid"></div>
+
+                <div id="emptyState" class="empty-state" style="display: none;">No se encontraron datos</div>
+
+                <div id="loadMoreContainer" style="text-align: center; margin-top: 2rem; display: none;">
+                    <button id="loadMoreBtn" class="back-btn" style="background: var(--primary); color: white; border: none; padding: 0.8rem 2rem; cursor: pointer;">
+                        Cargar más registros...
+                    </button>
+                </div>
+            </main>
+
+            <!-- CREATE/EDIT MODAL -->
+            <div id="createModal" class="modal-overlay">
+                <div class="modal">
+                    <div class="modal-header">
+                        <span id="modalTitle">Nuevo Registro</span>
+                        <span style="cursor: pointer;" onclick="closeModal()">✕</span>
+                    </div>
+                    <form id="createForm" onsubmit="event.preventDefault(); submitForm();">
+                        <input type="hidden" id="formMode" value="create">
+                        <input type="hidden" id="recordId" value="">
+                        <div id="dynamicFields"></div>
+                        <div class="modal-actions">
+                            <button type="button" class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                            <button type="submit" class="btn-save">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- DETAILS MODAL -->
+            <div id="detailsModal" class="modal-overlay">
+                <div class="modal" style="max-width: 800px;">
+                    <div class="modal-header">
+                        <span id="detailsTitle">Detalles del Paciente</span>
+                        <span style="cursor: pointer;" onclick="closeDetailsModal()">✕</span>
+                    </div>
+                    <div id="detailsContent" style="max-height: 70vh; overflow-y: auto;"></div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-save" onclick="closeDetailsModal()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STOCK MODAL -->
+            <div id="stockModal" class="modal-overlay">
+                <div class="modal">
+                    <div class="modal-header">
+                        <span id="stockTitle">Ajustar Stock</span>
+                        <span style="cursor: pointer;" onclick="closeStockModal()">✕</span>
+                    </div>
+                    <div style="margin-bottom: 20px; font-size: 1.1rem; text-align: center;">
+                        Stock Actual: <strong id="currentStockDisplay" style="font-size: 1.5rem; color: #333;">0</strong>
+                    </div>
+                    
+                    <div class="stock-toggle">
+                        <div class="stock-option selected" id="optAdd" onclick="setStockMode(true)">➕ Agregar</div>
+                        <div class="stock-option" id="optRemove" onclick="setStockMode(false)">➖ Quitar</div>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label>Cantidad</label>
+                        <input type="number" id="stockQty" min="1" value="1" style="font-size: 1.2rem; text-align: center;">
+                    </div>
+                    
+                    <div class="form-field">
+                        <label>Motivo (Opcional)</label>
+                        <input type="text" id="stockReason" placeholder="Ej: Compra proveedor, Devolución...">
+                    </div>
+                    
+                    <input type="hidden" id="stockProductId">
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" onclick="closeStockModal()">Cancelar</button>
+                        <button type="button" class="btn-save" onclick="submitStock()">Actualizar Stock</button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- POS MODAL -->
+            <div id="posModal" class="modal-overlay">
+                <div class="modal pos-modal">
+                    <div class="modal-header pos-header">
+                        <span>Registrar Venta</span>
+                        <span class="close-btn" onclick="closePOSModal()">&times;</span>
+                    </div>
+                    
+                    <div class="pos-layout">
+                        <!-- Left: Product Selection -->
+                        <div class="pos-products">
+                            <input type="text" id="posSearch" class="pos-search" placeholder="Buscar producto...">
+                            <div id="posProductList" class="pos-product-list">
+                                <!-- Products injected here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Right: Cart & Client -->
+                        <div class="pos-cart">
+                            <div class="pos-client">
+                                <h4>Cliente</h4>
+                                <input type="text" id="posClientName" placeholder="Nombre Cliente" class="pos-input">
+                                <input type="text" id="posClientDNI" placeholder="DNI" class="pos-input">
+                            </div>
+                            
+                            <div class="pos-cart-wrap">
+                                <table class="pos-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Prod</th>
+                                            <th style="width: 52px;">Cant</th>
+                                            <th style="width: 80px;">Total</th>
+                                            <th style="width: 30px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="posCartBody"></tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="pos-summary">
+                                <div class="pos-total">
+                                    <span>Total:</span>
+                                    <span id="posTotal">S/ 0.00</span>
+                                </div>
+                                <select id="posPaymentMethod" class="pos-select">
+                                    <option value="Efectivo">Efectivo</option>
+                                    <option value="Yape/Plin">Yape/Plin</option>
+                                    <option value="Tarjeta">Tarjeta</option>
+                                </select>
+                                <button onclick="processSale()" class="pos-primary-btn">Generar Venta</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <script>
+                window.VISO_VIEW = {
+                    rawData: __RAW_DATA__,
+                    jefeUser: __JEFE__,
+                    reportBasePath: __REPORT_BASE__,
+                    headers: __HEADERS__,
+                    canDelete: __CAN_DELETE__,
+                    canEdit: __CAN_EDIT__,
+                    currentModule: __CURRENT_MODULE__
+                };
+            </script>
+            <script src="/lan-assets/view.js"></script>
+        </body>
+        </html>

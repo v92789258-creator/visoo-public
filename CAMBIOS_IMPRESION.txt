@@ -1,0 +1,122 @@
+===============================================================================
+MEJORAS DE IMPRESION - VISO v4.2
+===============================================================================
+
+PROBLEMA IDENTIFICADO:
+- Las boletas se veían bien en Chrome pero al imprimir salían mal formateadas
+- Márgenes no se preservaban correctamente
+- Texto y elementos se cortaban
+
+SOLUCION IMPLEMENTADA:
+===============================================================================
+
+1. OPTIMIZACION DEL GENERADOR DE PDF (utils/generador_pdf.py)
+   ✓ Desabilitada la compresión para mejor calidad de impresión
+   ✓ Mejorada la clase BfoletaPDF con configuración de display mode
+   ✓ Altura dinámica calculada con margen de seguridad automático
+   ✓ Mejor manejo de márgenes en todos los elementos
+
+2. APERTURA DE PDFs MEJORADA (utils/file_handler.py)
+   ✓ Nueva función open_pdf_with_chrome() que abre en Chrome en lugar de Edge
+   ✓ Chrome preserva mejor los márgenes durante la impresión
+   ✓ Fallback automático si Chrome no está instalado
+   ✓ Argumentos optimizados para mejor visualización
+
+3. ARCHIVOS ACTUALIZADOS PARA USAR CHROME:
+   ✓ gui/dialogs/patient_dialog.py (4 instancias)
+   ✓ gui/main_window_pages/plantilla_boleta_page.py
+   ✓ gui/main_window_pages/inventory_page.py
+   ✓ gui/main_window_pages/registro_ventas_page.py
+
+RESULTADOS ESPERADOS:
+===============================================================================
+
+✓ PDFs se abren en Chrome (no Edge)
+✓ Al imprimir, los márgenes se preservan correctamente
+✓ Texto es nítido y legible
+✓ QR escanea correctamente
+✓ Compatible con impresoras térmicas 80mm y 58mm
+✓ Compatible con impresoras Bluetooth
+
+INSTRUCCIONES DE USO:
+===============================================================================
+
+OPCION 1: Ver en pantalla antes de imprimir
+1. La boleta se abre automáticamente en Chrome
+2. Verifica que se vea correctamente
+3. Presiona Ctrl+P para imprimir
+
+OPCION 2: Configuración correcta de impresión en Chrome
+1. En el diálogo de impresión, selecciona:
+   - Márgenes: "Ninguno"
+   - Escala: 100%
+   - Tamaño de papel: Personalizado (80mm x altura automática)
+   - Orientación: Vertical (Portrait)
+
+OPCION 3: Impresión directa (si tienes impresora Bluetooth configurada)
+1. En VISO, haz clic en "Imprimir" (no "Ver")
+2. Se enviará directamente a la impresora térmica
+
+NOTAS TECNICAS:
+===============================================================================
+
+Tamaños de boleta soportados:
+- 80mm (Estándar para impresoras térmicas)
+- 58mm (Algunas impresoras compactas)
+- Configurable por usuario en plantilla
+
+Formato de altura:
+- Automática según contenido
+- Máximo A4 (297mm)
+- Ajuste automático de márgenes
+
+Chrome es preferible porque:
+- Mejor soporte de CSS y márgenes
+- Preserva el formato exacto del PDF
+- Mejor detección de tamaño de página
+- Más consistente en diferentes máquinas
+
+ARCHIVOS MODIFICADOS:
+===============================================================================
+
+utils/generador_pdf.py
+  - Línea 56-60: Mejorada clase BfoletaPDF
+  - Línea 410-415: Optimización de altura final
+
+utils/file_handler.py
+  - Líneas 1268-1315: Nueva función open_pdf_with_chrome()
+
+gui/dialogs/patient_dialog.py
+  - Importación añadida: open_pdf_with_chrome
+  - 4 métodos actualizados para usar Chrome
+
+gui/main_window_pages/plantilla_boleta_page.py
+  - Importación añadida: open_pdf_with_chrome
+  - Método _open_pdf_with_viewer() actualizado
+
+gui/main_window_pages/inventory_page.py
+  - Importación añadida: open_pdf_with_chrome
+  - Método de apertura de boletas actualizado
+
+gui/main_window_pages/registro_ventas_page.py
+  - Importación añadida: open_pdf_with_chrome
+  - Método de apertura de boletas actualizado
+
+TESTING REALIZADO:
+===============================================================================
+
+✓ Verificación de sintaxis Python en todos los archivos
+✓ Chrome detectado correctamente en el sistema
+✓ Funciones importadas correctamente
+✓ Fallback a navegador predeterminado funcional
+
+SOPORTE:
+===============================================================================
+
+Si las boletas aún se ven mal al imprimir:
+1. Verifica que Chrome esté instalado
+2. Revisa la configuración de márgenes en Chrome (debe ser "Ninguno")
+3. Asegúrate de que la escala está en 100%
+4. Intenta con un tamaño de papel personalizado
+
+Contacto: Sistema VISO - Módulo de Impresión
